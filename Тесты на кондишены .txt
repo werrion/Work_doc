@@ -1,0 +1,596 @@
+
+Формат команд для стандартного ввода кондишена (старт на следующей сесии сохраниен в секцию )
+-------------------------------------------------------------------------------------
+-----Создание простого кондишена на проверку одного параметра на равенство с литералом 
+
+ABUtility wipe network 0 timing 1 set UserProfile.rules[0].name offer0 set UserProfile.rules[0].conditional UserProfile.exp@,250000#,==
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[0].conditional
+
+ABUtility network 0 timing 1 set UserProfile.exp 250000
+
+-----
+ABUtility wipe network 0 timing 1 set UserProfile.rules[0].name offer0 set UserProfile.rules[0].conditional UserProfile.exp@,"test"#,==
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].offer0
+
+ABUtility network 0 timing 1 set UserProfile.exp test
+
+Расписать тесты с точками и другими знаками и пробелами
+
+--------------------------------------
+
+-----Создание простого кондишена на проверку одного параметра на услвоие более чем литерал 1
+
+ABUtility wipe network 0 timing 1 set UserProfile.rules[0].name offer0 set UserProfile.rules[0].conditional UserProfile.exp@,23#,>=
+
+ABUtility network 0 timing 1 set UserProfile.exp 2.3
+
+
+
+
+
+
+
+
+
+----- тест на удаление кондишена кондишенов заменой на пустую переменную 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,==
+
+ABUtility network 0 timing 1 set UserProfile.rules[0]
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[0].offer1 get UserProfile.rules[1].offer2 get UserProfiles.rules 
+
+ABUtility network 0 timing 1 set UserProfile.exp 250 set UserProfile.money 250
+
+
+----- тест на удаление кондишена заменой на переменную со значением 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,==
+
+ABUtility network 0 timing 1 set UserProfile.rules[0] 1
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[0].offer1 get UserProfile.rules[1].offer2
+
+
+------создание кондишена с непоследовательным индексом 2 команды
+
+ABUtility network 0 timing 1 set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,==
+
+ABUtility network 0 timing 1 set UserProfile.money 250
+
+------создание кондишена с непоследовательным индексом 1 команда
+
+ABUtility network 0 timing 1 set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,== set UserProfile.money 250
+
+ABUtility network 0 timing 1 set UserProfile.mo 123
+
+---------   активация кондишенов  ( 2й )при сетании переменных в след сесии + повторный сет в новой сессии 
+
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,==
+
+ABUtility network 0 timing 1 set UserProfile.money 250 set UserProfile.exp 250
+
+ABUtility network 0 timing 1 set UserProfile.money 251 set UserProfile.exp 252
+
+---------   активация кондишенов  ( 2й )при сетании переменных в текущей сессии 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,== set UserProfile.money 250 set UserProfile.exp 250
+получаем 4 активации - проверяем имена и активацию 
+
+---------   активация кондишенов ( 2й )при сетании переменных в текущей сессии + сет на другое значение в новой сессии 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,== set UserProfile.money 250 set UserProfile.exp 250
+получаем 2 активации - проверяем имена и активацию 
+
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+--------   активация кондишенов  ( 2й )при сетании переменных в след сесии + еще один сет перменной в другое значение  
+
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,==
+
+ABUtility timing 1 set UserProfile.money 250 set UserProfile.exp 250 set UserProfile.money 251
+
+
+
+
+------------ создание древа кондишенов и удаление древа пустой переменной 
+
+ABUtility wipe network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,==
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[1].name get UserProfile.rules[0].conditional get UserProfile.rules[1].conditional
+
+ABUtility timing 1 set UserProfile.rules
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[1].name get UserProfile.rules[0].conditional get UserProfile.rules[1].conditional
+
+ABUtility wipe network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,==
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[0].conditional
+
+
+------------ создание древа кондишенов и удаление древа переменной со значением 
+
+ABUtility wipe network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,250#,==
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[1].name get UserProfile.rules[0].conditional get UserProfile.rules[1].conditional
+
+ABUtility timing 1 set UserProfile.rules 1
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[1].name get UserProfile.rules[0].conditional get UserProfile.rules[1].conditional
+
+ABUtility wipe network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,==
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[0].conditional
+
+------------------- сравнение трех переменных между собой 
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,==,UserProfile.er@,UserProfile.exp@,==,"&"
+
+
+ABUtility network 0 timing 1 set UserProfile.money 250 set UserProfile.exp 250 set UserProfile.er 250
+
+-----------------сравнение через не равно !=
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,"!"
+
+ABUtility network 0 timing 1 set UserProfile.money 250 set UserProfile.exp 250
+
+ABUtility network 0 timing 1 set UserProfile.money 253 set UserProfile.exp 251
+
+-------------------Сравнение через больше чем 
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,">"=,UserProfile.mon@,UserProfile.ex@,">"=,"|"  
+
+ABUtility network 0 timing 1 set UserProfile.money 249 set UserProfile.exp 250 set UserProfile.mon 249 set UserProfile.ex 250
+
+
+------------------ сравнение меньше чем 
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,222#,"<"=,UserProfile.mon@,333#,"<"=,"|" 
+
+------- сравнение и и и и
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,222#,==,UserProfile.mon@,333#,==,"&",UserProfile.ref@,444#,==,"&"
+
+ABUtility network 0 timing 1 set UserProfile.money 222 set UserProfile.mon 333 set UserProfile.ref 443
+ABUtility network 0 timing 1 set UserProfile.money 222 set UserProfile.mon 333 set UserProfile.ref 444
+
+
+----------- запись и работа кондишенов перменные в одной таблице
+
+ABUtility network 0 timing 1 set UserProfile.conditions[0].name offer1 set UserProfile.conditions[0].conditional UserProfile.money@,UserProfile.mon@,==
+
+ABUtility network 0 timing 1 set UserProfile.money 111 set UserProfile.mon 112
+
+
+----------- запись и работа кондишенов в разные таблицы и сравнение перменных с разных таблиц 4Х  
+
+ABUtility network 0 timing 1 set GlobalConfig.conditions[0].name offer1 set GlobalConfig.conditions[0].conditional UserProfile.money@,GlobalConfig.mon@,">"=,UserProfile.foo@,GlobalConfig.bar@,==,"|"
+
+ABUtility network 0 timing 1 set UserProfile.money 222 set GlobalConfig.mon 223 set UserProfile.foo 111 set GlobalConfig.bar 112
+
+
+---------------кондишен если выполняются сразу оба условия при сравнении ИЛИ 
+
+ABUtility network 0 timing 1 set GlobalConfig.conditions[0].name offer1 set GlobalConfig.conditions[0].conditional UserProfile.money@,GlobalConfig.mon@,">"=,UserProfile.foo@,GlobalConfig.bar@,==,"|"
+
+ABUtility network 0 timing 1 set UserProfile.money 222 set GlobalConfig.mon 222 set UserProfile.foo 111 set GlobalConfig.bar 111
+
+
+------------------------------работа конда сразу два одинаковых кондишена но сразными именами 
+
+ABUtility network 0 timing 1 set GlobalConfig.conditions[0].name offer1 set GlobalConfig.conditions[0].conditional UserProfile.money@,GlobalConfig.mon@,">"=,UserProfile.foo@,GlobalConfig.bar@,==,"|" set UserProfile.conditions[0].name offer2 set UserProfile.conditions[0].conditional UserProfile.money@,GlobalConfig.mon@,">"=,UserProfile.foo@,GlobalConfig.bar@,==,"|"
+
+
+-------------------Активация сразу 10 кондишенов по одной переменной  
+
+
+ABUtility network 0 timing 1 set GlobalConfig.conditions[0].name offer1 set GlobalConfig.conditions[0].conditional UserProfile.money@,222#,==, set UserProfile.conditions[0].name offer2 set UserProfile.conditions[0].conditional UserProfile.money@,222#,== set UserProfile.conditions[1].name offer3 set UserProfile.conditions[1].conditional UserProfile.money@,222#,== set UserProfile.conditions[2].name offer4 set UserProfile.conditions[2].conditional UserProfile.money@,222#,== set GlobalConfig.conditions[1].name offer5 set GlobalConfig.conditions[1].conditional UserProfile.money@,222#,== set GlobalConfig.conditions[2].name offer6 set GlobalConfig.conditions[2].conditional UserProfile.money@,222#,== set GlobalConfig.conditions[3].name offer7 set GlobalConfig.conditions[3].conditional UserProfile.money@,222#,== set GlobalConfig.conditions[4].name offer8 set GlobalConfig.conditions[4].conditional UserProfile.money@,222#,== set GlobalConfig.conditions[5].name offer9 set GlobalConfig.conditions[5].conditional UserProfile.money@,222#,== set GlobalConfig.conditions[6].name offer10 set GlobalConfig.conditions[6].conditional UserProfile.money@,222#,==
+
+
+ABUtility network 0 timing 1 set UserProfile.money 222
+
+тест что активируется только 10 офферов и нет лишнего и проверка времени выполнения такой операции 
+-------
+----------------тест сравнения (A=B|C<=D)
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,==,GlobalConfig.ter@,Level22Config.gg@,"<"=,"|" 
+ABUtility network 0 timing 1 set UserProfile.money 123 set UserProfile.exp 111 set GlobalConfig.ter 123 set Level22Config.gg 321
+
+
+----------------------- тест сравнения (C!=D & E = # | A>=B)
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.ter@,Level22Config.gg@,"!"=,level22Config.qwe@,444#,==,"&",UserProfile.money@,UserProfile.exp@,">"=,"|"
+
+
+ABUtility network 0 timing 1 set GlobalConfig.ter 11 set Level22Config.gg 11 set level22Config.qwe 443 set UserProfile.money 111 set UserProfile.exp@ 99 
+
+ABUtility network 0 timing 1 set GlobalConfig.ter 11 set Level22Config.gg 12 set level22Config.qwe 443 set UserProfile.money 111 set UserProfile.exp@ 99
+
+ABUtility network 0 timing 1 set GlobalConfig.ter 11 set Level22Config.gg 12 set level22Config.qwe 444 set UserProfile.money 111 set UserProfile.exp@ 99
+
+ABUtility network 0 timing 1 set GlobalConfig.www 1
+
+првоеряем что не активировалось при частичном выполенении условий , что активировалось когда выполены условия, проверить что активируется если в новой сесии сетаем что либо 
+-----------------------
+---------
+
+
+
+
+
+
+
+-----------------------------тест  кондишена на ИЛИ при сравнении пары с группой условий на == 
+
+
+
+-----------------------------тест  кондишена на ИЛИ при сравнеии пары с группой условий на >= <=  != 
+
+
+
+
+--------Сложное условие ИЛИ----------------------
+(A = B & C = D) | (G>F & H > J)
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,LocalProfile.rubies@,==,GlobalConfig.lvl@,Level22Config.start@,==,"&",GlobalConfig.chest@,UserProfile.mon@,">",LocalProfile.rub@,Level22Config.stars@,">","&","|"
+
+
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 2 set GlobalConfig.lvl 3 set Level22Config.start 4 set GlobalConfig.chest 5 set UserProfile.mon 6 set LocalProfile.rub 7 set Level22Config.stars 8
+
+
+проверяем что частичное выполение услвоия не активирует кондишен 1 (первая пара)
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 1 set GlobalConfig.lvl 3 set Level22Config.start 4 set GlobalConfig.chest 5 set UserProfile.mon 6 set LocalProfile.rub 7 set Level22Config.stars 8
+
+проверяем что частичное выполение условия не активирует кондишен 2 (вторая пара) 
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 2 set GlobalConfig.lvl 3 set Level22Config.start 3 set GlobalConfig.chest 5 set UserProfile.mon 6 set LocalProfile.rub 7 set Level22Config.stars 8
+
+проверяем что частичное выполение условия не активирует кондишен 2 (третья пара + первая)
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 1 set GlobalConfig.lvl 3 set Level22Config.start 4 set GlobalConfig.chest 6 set UserProfile.mon 5 set LocalProfile.rub 7 set Level22Config.stars 8
+
+
+проверяем что частичное выполение условия не активирует кондишен 2 (вторая и четвертая)
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 2 set GlobalConfig.lvl 3 set Level22Config.start 3 set GlobalConfig.chest 5 set UserProfile.mon 6 set LocalProfile.rub 7 set Level22Config.stars 6
+
+
+проверяем что выполение одного условия активирует кондишен 1 (первое условие)
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 1 set GlobalConfig.lvl 3 set Level22Config.start 3 set GlobalConfig.chest 5 set UserProfile.mon 6 set LocalProfile.rub 7 set Level22Config.stars 6
+
+
+проверяем что выполение одного условия активирует кондишен 2 (второе условие)
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 2 set GlobalConfig.lvl 3 set Level22Config.start 4 set GlobalConfig.chest 6 set UserProfile.mon 5 set LocalProfile.rub 8 set Level22Config.stars 7
+
+
+Вариант сета кондишена после выполнения обоих условий + повторный сет любой переменной - получаем одну активацию кондишена 
+сетам условия 
+сетаем кондишен 
+
+ABUtility network 0 timing 1 set UserProfile.money 1 set LocalProfile.rubies 1 set GlobalConfig.lvl 2 set Level22Config.start 2 set GlobalConfig.chest 6 set UserProfile.mon 5 set LocalProfile.rub 8 set Level22Config.stars 7
+
+Сетаем любую переменную - проверяем активацию конидшена 
+
+-------------------
+-----------------Проверка  после затирания оффера что старый не работает уже, а новый работает 
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.exp@,== set UserProfile.rules[0].name offer2 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.e@,== 
+
+
+ABUtility network 0 timing 1 set UserProfile.money 123 set UserProfile.exp 111
+ABUtility network 0 timing 1 set UserProfile.money 123 set UserProfile.e 11
+
+
+
+
+
+
+-------------------------------------
+--------Сложное условие Или -------------
+(A <= B & C >= D) | (G > F & H > J)
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,LocalProfile.rubies@,"<"=,GlobalConfig.lvl@,Level22Config.start@,">"=,"&",GlobalConfig.chest@,UserProfile.mon@,">",LocalProfile.rub@,Level22Config.stars@,">","&","|"
+
+ABUtility network 0 timing 1 set UserProfile.money 11 set LocalProfile.rubies 12 set GlobalConfig.lvl 11 set Level22Config.start 22 set GlobalConfig.chest 11 set UserProfile.mon 22 set LocalProfile.rub 11 set Level22Config.stars 22
+
+ABUtility network 0 timing 1 set UserProfile.money 11 set LocalProfile.rubies 12 set GlobalConfig.lvl 33 set Level22Config.start 22 set GlobalConfig.chest 11 set UserProfile.mon 11 set LocalProfile.rub 11 set Level22Config.stars 11
+
+
+ABUtility network 0 timing 1 set UserProfile.money 11 set LocalProfile.rubies 11 set GlobalConfig.lvl 11 set Level22Config.start 11 set GlobalConfig.chest 11 set UserProfile.mon 11 set LocalProfile.rub 11 set Level22Config.stars 11
+
+
+
+теcт что не выполянется при невыполненых условиях, неполностью выполеных и выполняется при полностью выполенном 
+
+
+-----------------Сложное условие И ----------------
+(A <= B & C >= D) & (G > F | H > J)
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,LocalProfile.rubies@,"<"=,GlobalConfig.lvl@,Level22Config.start@,">"=,"&",GlobalConfig.chest@,UserProfile.mon@,">",LocalProfile.rub@,Level22Config.stars@,">","|","&"
+
+ABUtility network 0 timing 1 set UserProfile.money 11 set LocalProfile.rubies 12 set GlobalConfig.lvl 11 set Level22Config.start 10 set GlobalConfig.chest 12 set UserProfile.mon 12 set LocalProfile.rub 11 set Level22Config.stars 22
+
+
+ABUtility network 0 timing 1 set UserProfile.money 11 set LocalProfile.rubies 12 set GlobalConfig.lvl 11 set Level22Config.start 10 set GlobalConfig.chest 12 set UserProfile.mon 11 set LocalProfile.rub 11 set Level22Config.stars 22
+
+-------------------------------------
+-----------------Сложное условие И с переменными типа массив и словарь ----------------
+(A <= B & C >= D) & (G > F | H > J)
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,LocalProfile.rubies.game.local@,"<"=,GlobalConfig.lvl@,Level22Config.start@,">"=,"&",GlobalConfig.chest@,UserProfile.mon@,">",LocalProfile.rub@,Level22Config.stars[0].lvl[2].reg@,">","|","&"
+
+ABUtility network 0 timing 1 set UserProfile.money 11 set LocalProfile.rubies.game.local 12 set GlobalConfig.lvl 11 set Level22Config.start 10 set GlobalConfig.chest 12 set UserProfile.mon 12 set LocalProfile.rub 33 set Level22Config.stars[0].lvl[2].reg 22
+
+----------------
+------------------------кейс на проверку бага 153 когда похожее имя секции ломает данные в дргуой секции 
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.a@,Level22Config.b@,"!"=,level22Config.c@,444#,==,"&"
+
+ABUtility network 0 timing 1 set GlobalConfig.a 11 set Level22Config.b 12 set level22Config.c 444
+-------------------------------------------------------
+------ кейс сравнения с пустой переменной - когда одно условие и оно с пустой переменной - никогда не стартует такой кондишен (разные варинты сравнения с пустой перменной != , > итд  )
+между двух перменных 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.a@,Level22Config.b@,"!"=
+TIME SPENT = 0.8029 ms
+TIME SPENT = 0.8603 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set GlobalConfig.a 1
+TIME SPENT = 0.8792 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set GlobalConfig.a 1
+TIME SPENT = 0.8148 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set GlobalConfig.a
+TIME SPENT = 0.709 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set GlobalConfig.a
+TIME SPENT = 0.6682 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set Level22Config.b 1
+TIME SPENT = 0.8042 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set Level22Config.b
+TIME SPENT = 0.8107 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set Level22Config.b 1
+TIME SPENT = 0.7696 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 settype Level22Config.b float
+TIME SPENT = 0.6652 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 settype GlobalConfig.a float
+TIME SPENT = 0.664 ms
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.a@,Level22Config.b@,==
+
+Возможно лишние тесты наавтоматизацию 
+
+------- разные варианты сравнения с пустой переменной когда ето одна перменная сравнивается с литералом 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.a@,2#,"!"=
+
+ABUtility network 0 timing 1 set GlobalConfig.a
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.a@,2#,"<"=
+
+
+ABUtility network 0 timing 1 set GlobalConfig.a
+------------- кейс когда два условия "И" когда одно из них с пустой переменной 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.ter@,Level22Config.gg@,"!"=,level22Config.qwe@,444#,==,"&"
+
+ABUtility network 0 timing 1 set GlobalConfig.ter 22 set Level22Config.gg 33
+
+ABUtility network 0 timing 1 settype GlobalConfig.ter none set Level22Config.qwe 444 set Level22Config.gg 33
+
+ABUtility network 0 timing 1 set GlobalConfig.ter 22 set Level22Config.qwe 444 set Level22Config.gg
+
+
+- ----------когда два условия ИЛИ и одно с пустой пеменной - стартут по нормальному условию 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.ter@,Level22Config.gg@,"!"=,Level22Config.qwe@,444#,==,"|"
+ABUtility network 0 timing 1 set Userprofile.f 1 set Level22Config.qwe 444
+
+
+------------------- когда пустая переменная разного типа но пустая 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.ter@,Level22Config.gg@,"!"=,Level22Config.qwe@,444#,==,"|" set GlobalConfig.ter 3efef set Level22Config.gg 2 set Level22Config.gg 4 settype GlobalConfig.ter int
+
+думаю такой не стоит делать тест? хватит и предидущих - вручную проверен 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional GlobalConfig.ter@,Level22Config.gg@,"!"=,Level22Config.qwe@,444#,==,"|" set GlobalConfig.ter 3efef set Level22Config.gg 2 set Level22Config.gg 4 set GlobalConfig.ter
+
+----============================================================================COND=====================================
+
+
+-----------Стартует кондишен если условия выполненые до его сета (работа после бага 150)
+
+ABUtility timing 1 set UserProfile.moon 111 cond offer1 UserProfile.moon@,111#,==
+
+
+------------ не стартует кондишен в следующей сессии 
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,111#,==
+
+
+-----------Проверка на запуск пачки временных кондишенов с сетом перменных под них в рамках одной команды 
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,111#,== cond offer2 UserProfile.foo@,222#,== cond offer3 UserProfile.bar@,222#,">"= cond offer_4 UserProfile.boo@,22#,"<"= cond offer_5 UserProfile.boom@,22#,"!"= set UserProfile.moon 111 set UserProfile.foo 222 set UserProfile.bar 223 set UserProfile.boo 21 set UserProfile.boom 123
+
+
+------------- Создание кондишена - затирание новым кондишеном (то же имя) проверяем что активен только первый так как новый с таким же именем не затирает  
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,111#,== cond offer1 UserProfile.foo@,222#,== set UserProfile.moon 111 set UserProfile.foo 222
+
+-----------------------
+Кондишен (A=B | С=D)
+ABUtility timing 1 cond offer1 UserProfile.moon@,LocalProfile.ret@,==,Level22Config.get@,LocalProfile.boo@,==,"|" set UserProfile.moon 1 set LocalProfile.ret 0 set Level22Config.get 1 set LocalProfile.boo 0
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,LocalProfile.ret@,==,Level22Config.get@,LocalProfile.boo@,==,"|" set UserProfile.moon 1 set LocalProfile.ret 1 set Level22Config.get 1 set LocalProfile.boo 0
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,LocalProfile.ret@,==,Level22Config.get@,LocalProfile.boo@,==,"|" set UserProfile.moon 1 set LocalProfile.ret 0 set Level22Config.get 1 set LocalProfile.boo 1
+
+Проверяем выполение условия по первому и второму условию и что нет выполения когда условия не соотвествуют
++++++++++++++++++++
+Кондишен (A=B & С=D) 
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,LocalProfile.ret@,==,Level22Config.get@,LocalProfile.boo@,==,"&" set UserProfile.moon 1 set LocalProfile.ret 0 set Level22Config.get 1 set LocalProfile.boo 0
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,LocalProfile.ret@,==,Level22Config.get@,LocalProfile.boo@,==,"&" set UserProfile.moon 1 set LocalProfile.ret 1 set Level22Config.get 1 set LocalProfile.boo 0
+Проверяем что нет активации при неполном выполении и что есть при полном
+
+______________________________________________________________
+тест моментального кондишена (A=# & C!=D) & (G<F | H>=J)
+
+ABUtility timing 1 cond offer1 UserProfile.money@,999#,==,GlobalConfig.lvl@,Level22Config.start@,"!"=,"&",GlobalConfig.chest@,UserProfile.mon@,"<",LocalProfile.rub@,Level22Config.stars@,">"=,"|","&" set UserProfile.money 998 set GlobalConfig.lvl 11 set Level22Config.start 11 set GlobalConfig.chest 33 set UserProfile.mon 33 set LocalProfile.rub 44 set Level22Config.stars 55 
+
+ABUtility timing 1 cond offer1 UserProfile.money@,999#,==,GlobalConfig.lvl@,Level22Config.start@,"!"=,"&",GlobalConfig.chest@,UserProfile.mon@,"<",LocalProfile.rub@,Level22Config.stars@,">"=,"|","&" set UserProfile.money 998 set GlobalConfig.lvl 11 set Level22Config.start 11 set GlobalConfig.chest 33 set UserProfile.mon 33 set LocalProfile.rub 44 set Level22Config.stars 55
+
+ABUtility timing 1 cond offer1 UserProfile.money@,999#,==,GlobalConfig.lvl@,Level22Config.start@,"!"=,"&",GlobalConfig.chest@,UserProfile.mon@,"<",LocalProfile.rub@,Level22Config.stars@,">"=,"|","&" set UserProfile.money 998 set GlobalConfig.lvl 11 set Level22Config.start 12 set GlobalConfig.chest 33 set UserProfile.mon 33 set LocalProfile.rub 66 set Level22Config.stars 55
+
+Проверяю что нет активации когад не выполены условия и что она есть когда выполены (с вайпами между ними переменных) 
+
+----------------------------------------------------
+----тест моментального кондишена с переменными типа массив и словарь (A=# & C!=D) & (G<F | H>=J)
+
+ABUtility timing 1 cond offer1 UserProfile.money.gold@,999#,==,GlobalConfig.lvl[4].bonus@,Level22Config.start@,"!"=,"&",GlobalConfig.chest@,UserProfile.mon@,"<",LocalProfile.rub@,Level22Config.stars@,">"=,"|","&" set UserProfile.money.gold 991 set GlobalConfig.lvl[4].bonus 11 set Level22Config.start 11 set GlobalConfig.chest 33 set UserProfile.mon 33 set LocalProfile.rub 44 set Level22Config.stars 55
+все фейл условия 
+
+ABUtility timing 1 cond offer1 UserProfile.money.gold@,999#,==,GlobalConfig.lvl[4].bonus@,Level22Config.start@,"!"=,"&",GlobalConfig.chest@,UserProfile.mon@,"<",LocalProfile.rub@,Level22Config.stars@,">"=,"|","&" set UserProfile.money.gold 999 set GlobalConfig.lvl[4].bonus 12 set Level22Config.start 11 set GlobalConfig.chest 32 set UserProfile.mon 33 set LocalProfile.rub 44 set Level22Config.stars 55
+выполняется 
+
+----------------------------
+Тесты на сравнение с перменными разного типа 
+
+___________________
+Проверка с перменной типа  INT 
+
+ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,"84847"#,==
+TIME SPENT = 0.5927 ms
+Condition activated: offer1
+TIME SPENT = 0.0843 ms
+
+ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,84847.0#,==
+TIME SPENT = 0.6437 ms
+Condition activated: offer1
+TIME SPENT = 0.952 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,84847#,"<"=
+TIME SPENT = 0.5795 ms
+Condition activated: offer1
+TIME SPENT = 0.844 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,84847#,"<"
+TIME SPENT = 0.5993 ms
+TIME SPENT = 0.0817 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,84848#,"<"
+TIME SPENT = 0.6477 ms
+Condition activated: offer1
+TIME SPENT = 0.448 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,84848#,">"
+TIME SPENT = 0.5192 ms
+TIME SPENT = 0.1075 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,84845#,">"
+TIME SPENT = 0.5996 ms
+Condition activated: offer1
+TIME SPENT = 0.4501 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t int UserProfile.money 84847 cond offer1 UserProfile.money@,84845#,"!"=
+
+ABUtility timing 1 set -t int UserProfile.money -84847 cond offer1 UserProfile.money@,84847#,"!"=
+TIME SPENT = 0.5921 ms
+Condition activated: offer1
+TIME SPENT = 0.0844 ms
+
+ABUtility timing 1 set -t int UserProfile.money -84847 cond offer1 UserProfile.money@,-84847#,"!"=
+
+------------------
+Проверки с перменной типа  float 
+
+ABUtility timing 1 set -t float UserProfile.money 10.01 cond offer1 UserProfile.money@,10#,"!"=
+
+ABUtility timing 1 set -t float UserProfile.money 10.01 cond offer1 UserProfile.money@,10.02#,"<"
+ABUtility timing 1 set -t float UserProfile.money 10.01 cond offer1 UserProfile.money@,10.001#,"<"
+ABUtility timing 1 set -t float UserProfile.money 10.01 cond offer1 UserProfile.money@,-10.01#,">"=
+TIME SPENT = 0.6047 ms
+Condition activated: offer1
+TIME SPENT = 0.5115 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t float UserProfile.money 10.01 cond offer1 UserProfile.money@,"10.01"#,">"=
+
+
+-------------------
+Проверки  с переменной типа bool 
+
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,true#,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,false#,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money 0 cond offer1 UserProfile.money@,true#,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money 0 cond offer1 UserProfile.money@,false#,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,1#,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money 0 cond offer1 UserProfile.money@,0#,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,0#,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,true#,">"=
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,true#,"!"=
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,false#,"!"=
+ABUtility timing 1 set -t bool UserProfile.money 0 cond offer1 UserProfile.money@,false#,"!"=
+
+
+ABUtility timing 1 set -t bool UserProfile.money true cond offer1 UserProfile.money@,false#,"!"=
+
+
+ABUtility timing 1 set -t bool UserProfile.money false cond offer1 UserProfile.money@,false#,"!"=
+
+
+ABUtility timing 1 set -t bool UserProfile.money true cond offer1 UserProfile.money@,0#,==
+
+с переменной типа none 
+
+ABUtility timing 1 set -t bool UserProfile.money true set UserProfile.b 1 settype UserProfile.b none cond offer1 UserProfile.money@,UserProfile.b@,==
+
+
+ABUtility timing 1 set -t bool UserProfile.money false set UserProfile.b 1 settype UserProfile.b none cond offer1 UserProfile.money@,UserProfile.b@,==
+
+
+Првоерки с остальными типами -
+Сравнение перменной с типом bool - с FALSE, false, True, true, TRUE, 0, 1, none, NULL, None, Null,
+----------------------------
+
+Проверка перменной типа STRING 
+
+ABUtility timing 1 set -t string UserProfile.name true cond offer1 UserProfile.name@,1#,==
+
+ABUtility timing 1 set -t string UserProfile.name true cond offer1 UserProfile.name@,true#,==
+ABUtility timing 1 set -t string UserProfile.name true cond offer1 UserProfile.name@,"true"#,==
+
+
+ABUtility timing 1 set -t string UserProfile.name "foo bar" cond offer1 UserProfile.name@,"foo bar"#,==
+
+ABUtility timing 1 set -t string UserProfile.name "foo bar" cond offer1 UserProfile.name@,"foobar"#,"!"=
+ABUtility timing 1 set -t string UserProfile.name "foo bar" cond offer1 UserProfile.name@,"afoobar"#,">"=
+
+ABUtility timing 1 set -t string UserProfile.name foobar cond offer1 UserProfile.name@,12#,">"=
+
+
+--------------------------------------------------
+

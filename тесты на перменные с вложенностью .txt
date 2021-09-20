@@ -1,0 +1,179 @@
+вайп 
+ABUtility network 0 timing 1 set UserProfile.awards[0].item1 1
+ABUtility network 0 timing 1 get UserProfile.awards[0].item1
+
+с ветками после вайпа 
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1 00 set UserProfile.awards[0].item[1].award1 01 set UserProfile.awards[1].item[1].award1 11
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1 get UserProfile.awards[0].item[1].award1 get UserProfile.awards[1].item[1].award1 get UserProfile.awards[1].item[0]
+
+
+Тройная вложеность (затирание переменной на ветку с массивом)
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1 00 set UserProfile.awards[0].item[1].award1 01 set UserProfile.awards[1].item[1].award1 11
+set UserProfile.awards[1].item[1].award1[0].aw1 110
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1 get UserProfile.awards[0].item[1].award1 get UserProfile.awards[1].item[1].award1 get UserProfile.awards[1].item[1].award1[0].aw1
+
+тест для тройной вложенности (без пропуска веток)
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1 00 set UserProfile.awards[0].item[1].award1 01 set UserProfile.awards[1].item[0].award1 11 set UserProfile.awards[1].item[0].award1[0].aw1 110
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1 get UserProfile.awards[0].item[1].award1 get UserProfile.awards[1].item[0].award1 get UserProfile.awards[1].item[0].award1[0].aw1
+
+
+т2
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1 00 set UserProfile.awards[0].item[1].award1 01 set UserProfile.awards[1].item[0].award1[0].rew1 11 set UserProfile.awards[1].item[0].award1[1].aw1 110
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1 get UserProfile.awards[0].item[1].award1 get UserProfile.awards[1].item[0].award1[0].rew1 get UserProfile.awards[1].item[0].award1[1].aw1
+
+
+--- 4z вложеность 
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba
+
+----- глубокая вложеность изменение выборочных значений + что не поменялись другие ветки 
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards[0].item[0].award1[2].fo fefe set UserProfile.awards[1].item[0].award1[0].rew1[1].bo fafa
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba
+
+
+-- смена типов в ветках + тест что не похерились другие типы 
+вайп 
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 settype UserProfile.awards[0].item[0].award1[2].fo int settype UserProfile.awards[1].item[3].award1[1].aw1[5].ba int
+
+
+ABUtility network 0 timing 1 gettype UserProfile.awards[0].item[0].award1[0].fi gettype UserProfile.awards[0].item[0].award1[2].fo gettype UserProfile.awards[1].item[0].award1[0].rew1[1].bo gettype UserProfile.awards[1].item[3].award1[1].aw1[5].ba
+
+---- 
+затирание ветки и проверка что нет удаленных детей (пустой переменной)
+вайп
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards[0].item
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba
+
+
+--- затирание древа и проверка что нет удаленных детей (заменяем древо массив на переменную)
+вайп
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards 123
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba get UserProfile.awards
+
+----- затирание дерева пустой переменной 
+
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba get UserProfile.awards
+
+----- проверка на лишние переменные - нет корневой без массива, гет не ломает ветки переменной массива 
+
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315
+
+
+ABUtility network 0 timing 1 get UserProfile.awards get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba
+
+---- затираем одну ветку с перменной и заменяем на словарь 
+
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards[1].item.item2.item3 12345
+
+ABUtility network 0 timing 1 get UserProfile.awards get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba get UserProfile.awards[1].item.item2.item3
+
+---- затираем одну ветку с переменной и заменяем на словарь и после удаляем детей словаря 
+
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards[1].item.item2.item3 12345 set UserProfile.awards[1].item.item2 999
+
+ABUtility network 0 timing 1 get UserProfile.awards get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba get UserProfile.awards[1].item.item2.item3 get UserProfile.awards[1].item.item2
+
+
+
+------- --------------------------------------------------------------------------
+Тесты на вложеную переменную типа словарик 
+-----------------------------------------------------------------
+
+
+-- создание простого словаря 
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 123
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award get UserProfile.award.lvl1
+
+----- создаем словарь с несколькми ветками 
+вайп
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.exp 11 set UserProfile.award.chest 22
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.exp get UserProfile.award.chest
+
+---- Создаем словарь с глубокой вложенностью и разными ветками 
+вайп
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu
+
+--- меняем значения в некоторых переменных словаря и что не поменялись другие 
+вайп 
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 set UserProfile.award.lvl3 30 set UserProfile.award.b_lvl.thu 2220
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu
+
+--- меняем тип в некоторых переменных словаря и что не поменялись другие 
+вайп
+
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 settype UserProfile.award.lvl3 int settype UserProfile.award.b_lvl.thu int
+
+ABUtility network 0 timing 1 gettype UserProfile.award.lvl1 gettype UserProfile.award.lvl2 gettype UserProfile.award.lvl3 gettype UserProfile.award.b_lvl.mon gettype UserProfile.award.b_lvl.thu get UserProfile.award.lvl3 get UserProfile.award.b_lvl.thu
+
+---------- затирание ветки значением новой переменной  
+
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 set UserProfile.award.b_lvl new
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu get UserProfile.award.b_lvl
+
+---------- затирание ветки значением новой переменной
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 set UserProfile.award.b_lvl
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu get UserProfile.award.b_lvl
+
+--------- затирание древа пустой перменной 
+
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 set UserProfile.award
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu get UserProfile.award
+
+--------- затирание древа новой переменной со значением 
+
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 set UserProfile.award 1
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu get UserProfile.award
+
+------------- Затираем одну переменную в ветке и заменяем на словарь
+
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 set UserProfile.award.b_lvl.thu.np np1
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu get UserProfile.award.b_lvl.thu.np
+
+---------- затираем ветку словаря и заменяем на ветку с массивом  
+
+ABUtility network 0 timing 1 set UserProfile.award.lvl1 1 set UserProfile.award.lvl2 2 set UserProfile.award.lvl3 3 set UserProfile.award.b_lvl.mon 111 set UserProfile.award.b_lvl.thu 222 set UserProfile.award.b_lvl.thu[0].np 1np
+
+ABUtility network 0 timing 1 get UserProfile.award.lvl1 get UserProfile.award.lvl2 get UserProfile.award.lvl3 get UserProfile.award.b_lvl.mon get UserProfile.award.b_lvl.thu get UserProfile.award.b_lvl.thu[0].np
+
+
+
+
+
+-------------------------------------------------
+---------------тест сета пачки переменных и гета занчения - когда затираются переменные после сета - получаем новые значения, получаем требуемый тип, не затираем значения при гете другого формата
+
+
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards 123 set UserProfile.awards[0].item[0].award1[0].fii 000
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba get UserProfile.awards get UserProfile.awards[0].item[0].award1[0].fii gettype UserProfile.awards[0].item[0].award1[0].fii
+
+
+---------------тест сета пачки переменных и гета занчения - когда затираются переменные после сета - получаем новые значения, получаем требуемый тип, не затираем значения при гете другого формата
+ABUtility network 0 timing 1 set UserProfile.awards[0].item[0].award1[0].fi 000 set UserProfile.awards[0].item[0].award1[2].fo 002 set UserProfile.awards[1].item[0].award1[0].rew1[1].bo 101 set UserProfile.awards[1].item[3].award1[1].aw1[5].ba 1315 set UserProfile.awards 123
+
+ABUtility network 0 timing 1 get UserProfile.awards[0].item[0].award1[0].fi get UserProfile.awards[0].item[0].award1[2].fo get UserProfile.awards[1].item[0].award1[0].rew1[1].bo get UserProfile.awards[1].item[3].award1[1].aw1[5].ba get UserProfile.awards
+
+
+ABUtility network 0 timing 1 get UserProfile.awards   - тут уже получим значение 
+
+------------------------

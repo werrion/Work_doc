@@ -1,0 +1,21 @@
+friends: [
+      '{{repeat(3)}}',
+      {
+        id: '{{index()}}',
+        name: '{{firstName()}} {{surname()}}'
+      }
+    ],
+
+friends: [
+      '{{repeat(3)}}',
+      {
+        id: '{{index()}}',
+        name: [
+      '{{repeat(3)}}',
+      {
+        id: '{{index()}}',
+        name: '{{firstName()}} {{surname()}}'
+      }
+    ]
+      }
+    ],

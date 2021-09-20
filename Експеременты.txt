@@ -1,0 +1,64 @@
+Експеременты 
+
+
+ABUtility timing 1 cond offer1 UserProfile.moon@,111#,==
+
+
+
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[5].item5 5   
+
+
+ABUtility timing 1 get UserProfile.awards[4]
+
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[5].item5 5
+TIME SPENT = 0.9721 ms
+TIME SPENT = 0.6639 ms
+TIME SPENT = 0.5768 ms
+TIME SPENT = 0.6129 ms
+TIME SPENT = 0.7069 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 reorder UserProfile.awards
+TIME SPENT = 0.0018 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item3 get UserProfile.awards[5].item5
+0
+TIME SPENT = 1.1502 ms
+1
+TIME SPENT = 0.859 ms
+2
+TIME SPENT = 0.8595 ms
+3
+TIME SPENT = 1.8165 ms
+5
+TIME SPENT = 1.0824 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 get UserProfile.awards[4]
+
+TIME SPENT = 1.0536 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 get UserProfile.awards[4].item5
+
+TIME SPENT = 1.1416 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 reorder UserProfile.awards
+
+
+==++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[25].item5 5
+
+ABUtility timing 1 reorder UserProfile.awards
+
+ABUtility timing 1 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item3 get UserProfile.awards[25].item5
+
+
+
+
+ABUtility timing 1 set -t bool UserProfile.money false cond offer1 UserProfile.money@,UserProfile.b@,== 

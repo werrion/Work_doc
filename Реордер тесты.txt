@@ -1,0 +1,315 @@
+Реордер тесты 
+
+---------------Когда есть непоследовательные индексы 
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[5].item5 5
+
+Гетаем их 
+ABUtility timing 1 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[5].item5 get UserProfile.awards[3].item5
+
+Проверяем что есть новые 3й индекс и что нету старого 5го 
+
+---------------- Когда нет непоследовательных индексов 
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3
+
+ABUtility timing 1 reorder UserProfile.awards
+
+ABUtility timing 1 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item3
+
+------------------- тест когда рименяешь к словарю 
+ABUtility timing 1 set UserProfile.awards.item0 0 set UserProfile.awards.item1 1 set UserProfile.awards.item2 2
+ABUtility timing 1 reorder UserProfile.awards
+ABUtility timing 1 get UserProfile.awards.item0 get UserProfile.awards.item1 get UserProfile.awards.item2
+
+--------------------  тест когда обращаешся к секции с кондишенами 
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,LocalProfile.rubies.game.local@,"<"= set UserProfile.rules[1].name offer2 set UserProfile.rules[1].conditional UserProfile.money@,LocalProfile.rubies.game.local@,== set UserProfile.rules[3].name offer3 set UserProfile.rules[3].conditional UserProfile.money@,LocalProfile.rubies.game.local@,"!"=   
+
+ABUtility timing 1 reorder UserProfile.rules
+
+
+ABUtility network 0 timing 1 get UserProfile.rules[0].name get UserProfile.rules[0].conditional get UserProfile.rules[1].name get UserProfile.rules[1].conditional get UserProfile.rules[3].name get UserProfile.rules[3].conditional get UserProfile.rules[2].name get UserProfile.rules[2].conditional 
+
+-----------------------------
+-----------когда одна из переменных в массиве пустая с типом none 
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[5].item5 5 settype UserProfile.awards[1].item1 none 
+
+ABUtility timing 1 reorder 
+
+ABUtility timing 1 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item2 get UserProfile.awards[5].item5 gettype UserProfile.awards[1].item1
+
+ _____________________________________
+=============реордер когда одна из переменных в массиве пустая с типом float
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[5].item5 5 settype UserProfile.awards[1].item1 float
+
+ABUtility timing 1 reorder 
+
+ABUtility timing 1 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item2 get UserProfile.awards[5].item5 gettype UserProfile.awards[1].item1
+
+-----------------------------------------------
+-------------------задать пачкой с ключем реордер где будут и другие операции с сетами гетами и др.
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[5].item5 5
+
+
+ABUtility timing 1 reorder UserProfile.awards set UserProfile.awards[0].item0 7 set UserProfile.awards[1].item1 8 set UserProfile.awards[2].item2 9 set UserProfile.awards[5].item5 10 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item5 
+
+-----------------------------------------------------
+-----------------реордер с переменными  когда сначала массив а внутри словарик 
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1.a 1 set UserProfile.awards[1].item1.b 2 set UserProfile.awards[5].item5 5
+
+ABUtility timing 1 reorder
+
+ABUtility timing 1 get UserProfile.awards[0].item0 get UserProfile.awards[1].item1.a get UserProfile.awards[1].item1.b get UserProfile.awards[5].item5
+
+-----------------------------------------------------
+---------реордер с переменными  когда сначала массив а внутри массив
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1.a 1 set UserProfile.awards[2].item1[10] 0 set UserProfile.awards[5].item5 5
+
+
+ABUtility timing 1 reorder UserProfile.awards get UserProfile.awards[0].item0 get UserProfile.awards[1].item1.a get UserProfile.awards[2].item1[10] get UserProfile.awards[5].item5
+
+----------------------------
+------реордер для секции где не только массивы лежат 
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1.a 1 set UserProfile.awards.item1[10] 0 set UserProfile.awards[5].item5 5
+
+ABUtility timing 1 reorder UserProfile.awards get UserProfile.awards[0].item0 get UserProfile.awards[1].item1.a get UserProfile.awards.item1[10] get UserProfile.awards[5].item5
+ требуется доработка - тут баг?  скирн 1 
+
+ --------------------------------------------------------
+ --------реордер дальних индексов + несколько непоследовательных индексов 
+ ABUtility timing 1 set UserProfile.awards[65].item0 0 set UserProfile.awards[88].item1 1 set UserProfile.awards[112].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[25].item5 5 
+
+ABUtility timing 1 get UserProfile.awards[65].item0 get UserProfile.awards[88].item1 get UserProfile.awards[112].item2 get UserProfile.awards[3].item3 get UserProfile.awards[25].item5
+
+
+ABUtility timing 1 get UserProfile.awards[0].item3 get UserProfile.awards[1].item5 get UserProfile.awards[2].item0 get UserProfile.awards[3].item1 get UserProfile.awards[4].item2
+
+___________________
+
+--- удалить в одной команде один из индексов и сделать реордер 
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[5].item5 5 settype UserProfile.awards[1] none reorder UserProfile.awards get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[1].item2 get UserProfile.awards[3].item3 get UserProfile.awards[2].item3 get UserProfile.awards[5].item5 get UserProfile.awards[4].item5 gettype UserProfile.awards[3].item5
+
+
+удаляем первый персчитываем все, првоеряем что не соатлось старых чайлждов 
+
+------------------------------------
+------  удаляем несколько в массиве реордер и получаем новые и старые элементы 
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[5].item5 5 settype UserProfile.awards[1] none settype UserProfile.awards[0] none settype UserProfile.awards[3] none reorder UserProfile.awards get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[0].item2 get UserProfile.awards[3].item3 get UserProfile.awards[1].item5 get UserProfile.awards[5].item5
+
+ABUtility timing 1 
+set UserProfile.awards[0].item0 0 
+set UserProfile.awards[1].item1 1 
+set UserProfile.awards[2].item2 2 
+set UserProfile.awards[3].item3 3 
+set UserProfile.awards[5].item5 5 
+settype UserProfile.awards[1].item1 none 
+settype UserProfile.awards[0].item0 none 
+settype UserProfile.awards[3].item3 none 
+reorder UserProfile.awards 
+get UserProfile.awards[0].item0 
+get UserProfile.awards[1].item1 
+get UserProfile.awards[2].item2 
+get UserProfile.awards[0].item2 
+get UserProfile.awards[3].item3 
+get UserProfile.awards[1].item5 
+get UserProfile.awards[5].item5
+TIME SPENT = 0.7948 ms
+TIME SPENT = 0.7859 ms
+TIME SPENT = 0.6656 ms
+TIME SPENT = 0.8176 ms
+TIME SPENT = 0.9597 ms
+TIME SPENT = 0.9929 ms
+TIME SPENT = 0.7047 ms
+TIME SPENT = 0.6997 ms
+TIME SPENT = 0.6687 ms
+
+TIME SPENT = 1.158 ms
+
+TIME SPENT = 1.8337 ms
+
+TIME SPENT = 1.049 ms
+2
+TIME SPENT = 1.0921 ms
+
+TIME SPENT = 1.1126 ms
+5
+TIME SPENT = 1.0462 ms
+
+TIME SPENT = 1.1056 ms
+
+---------------------------------------------------------------
+----------  замена словаря на массив и его реордер 
+ABUtility timing 1 set UserPorfile.awards.start 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[5].item5 reorder UserProfile.awards get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item3 get UserProfile.awards[3].item3 get UserProfile.awards[5].item5 get UserProfile.awards[4].item5
+
+
+
+ABUtility timing 1 
+set UserProfile.awards.start 1 
+set UserProfile.awards[0].item0 0 
+set UserProfile.awards[1].item1 1 
+set UserProfile.awards[2].item2 2 
+set UserProfile.awards[3].item3 3 
+set UserProfile.awards[5].item5 5
+reorder UserProfile.awards 
+get UserProfile.awards[0].item0 
+get UserProfile.awards[1].item1 
+get UserProfile.awards[2].item2 
+get UserProfile.awards[3].item3 
+get UserProfile.awards[3].item3 
+get UserProfile.awards[5].item5 
+get UserProfile.awards[4].item5
+
+TIME SPENT = 0.8581 ms
+TIME SPENT = 0.7223 ms
+TIME SPENT = 0.63 ms
+TIME SPENT = 0.6358 ms
+TIME SPENT = 0.7313 ms
+TIME SPENT = 0.8148 ms
+TIME SPENT = 0.736 ms
+0
+TIME SPENT = 1.5543 ms
+1
+TIME SPENT = 1.1256 ms
+2
+TIME SPENT = 1.1137 ms
+3
+TIME SPENT = 1.1434 ms
+3
+TIME SPENT = 4.1283 ms
+
+TIME SPENT = 1.4223 ms
+5
+TIME SPENT = 1.1522 ms
+
+----------------------------------------------
+---------
+реордер ветки в которой есть свой массив что он не затирается 
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[5].item5 5 set UserProfile.awards[6].item[0].name 0 set UserProfile.awards[6].item[4].name4 4 reorder UserProfile.awards get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item3 get UserProfile.awards[3].item3 get UserProfile.awards[5].item5 get UserProfile.awards[4].item5 get UserProfile.awards[6] get UserProfile.awards[6].item[0].name get UserProfile.awards[6].item[4].name4  
+
+ABUtility timing 1 
+set UserProfile.awards[0].item0 0 
+set UserProfile.awards[1].item1 1 
+set UserProfile.awards[2].item2 2 
+set UserProfile.awards[3].item3 3 
+set UserProfile.awards[5].item5 5 
+set UserProfile.awards[6].item[0].name 0 
+set UserProfile.awards[6].item[4].name4 4 
+reorder UserProfile.awards 
+get UserProfile.awards[0].item0 
+get UserProfile.awards[1].item1 
+get UserProfile.awards[2].item2 
+get UserProfile.awards[3].item3 
+get UserProfile.awards[3].item3 
+et UserProfile.awards[5].item5 
+get UserProfile.awards[4].item5 
+get UserProfile.awards[6] 
+get UserProfile.awards[6].item[0].name 
+get UserProfile.awards[6].item[4].name4
+TIME SPENT = 0.8128 ms
+TIME SPENT = 0.6681 ms
+TIME SPENT = 0.7606 ms
+TIME SPENT = 0.7441 ms
+TIME SPENT = 0.9341 ms
+TIME SPENT = 0.7953 ms
+TIME SPENT = 0.9263 ms
+TIME SPENT = 0.9116 ms
+0
+TIME SPENT = 1.6105 ms
+1
+TIME SPENT = 1.1975 ms
+2
+TIME SPENT = 3.4455 ms
+3
+TIME SPENT = 1.2666 ms
+3
+TIME SPENT = 1.2714 ms
+
+TIME SPENT = 1.2451 ms
+5
+TIME SPENT = 1.2805 ms
+
+TIME SPENT = 1.2242 ms
+
+TIME SPENT = 1.2593 ms
+
+TIME SPENT = 1.578 m
+------------------------------------------
+-------- Двойной реордер в одной команде в разных секциях 
+
+ABUtility timing 1 set UserProfile.awards[0].item0 0 set UserProfile.awards[1].item1 1 set UserProfile.awards[2].item2 2 set UserProfile.awards[3].item3 3 set UserProfile.awards[125].item125 125 reorder UserProfile.awards set UserProfile.awa[0] 1 set UserProfile.awa[2] 2 reorder UserProfile.awa get UserProfile.awards[0].item0 get UserProfile.awards[1].item1 get UserProfile.awards[2].item2 get UserProfile.awards[3].item3 get UserProfile.awards[125].item125 get UserProfile.awards[4].item125 get UserProfile.awa[0] get UserProfile.awa[2] get UserProfile.awa[1]
+
+TIME SPENT = 0.8133 ms
+TIME SPENT = 0.835 ms
+TIME SPENT = 0.8638 ms
+TIME SPENT = 0.8309 ms
+TIME SPENT = 0.831 ms
+TIME SPENT = 1.1541 ms
+TIME SPENT = 1.0996 ms
+TIME SPENT = 0.8575 ms
+TIME SPENT = 0.9195 ms
+0
+TIME SPENT = 1.6498 ms
+1
+TIME SPENT = 1.2334 ms
+2
+TIME SPENT = 1.3387 ms
+3
+TIME SPENT = 2.429 ms
+
+TIME SPENT = 1.2123 ms
+125
+TIME SPENT = 1.3471 ms
+1
+TIME SPENT = 1.6503 ms
+
+TIME SPENT = 1.2266 ms
+2
+TIME SPENT = 1.2206 ms
+
+------------------------------------------------------
+------------ Реордер Кондишенов 
+
+ABUtility network 0 timing 1 set UserProfile.rules[1].name offer1 set UserProfile.rules[1].conditional UserProfile.money@,250#,== set UserProfile.rules[256].name offer256 set UserProfile.rules[256].conditional UserProfile.mone@,250#,== set UserProfile.rules[121].name offer121 set UserProfile.rules[121].conditional UserProfile.mon@,250#,== reorder UserProfile.rules get UserProfile.rules[1].name get UserProfile.rules[0].name get UserProfile.rules[1].conditional get UserProfile.rules[0].conditional get UserProfile.rules[256].name get UserProfile.rules[2].name get UserProfile.rules[256].conditional get UserProfile.rules[2].conditional get UserProfile.rules[121].name get UserProfile.rules[1].name get UserProfile.rules[121].conditional get UserProfile.rules[1].conditional
+TIME SPENT = 0.7949 ms
+TIME SPENT = 0.8111 ms
+TIME SPENT = 0.8648 ms
+TIME SPENT = 0.9187 ms
+TIME SPENT = 0.8443 ms
+TIME SPENT = 0.8282 ms
+TIME SPENT = 0.8756 ms
+offer121
+TIME SPENT = 1.6887 ms
+offer1
+TIME SPENT = 1.2241 ms
+UserProfile.mon@,250#,==
+TIME SPENT = 1.5521 ms
+UserProfile.money@,250#,==
+TIME SPENT = 1.8861 ms
+
+TIME SPENT = 1.6207 ms
+offer256
+TIME SPENT = 1.6606 ms
+
+TIME SPENT = 1.2468 ms
+UserProfile.mone@,250#,==
+TIME SPENT = 1.5369 ms
+
+TIME SPENT = 1.2313 ms
+offer121
+TIME SPENT = 1.3649 ms
+
+TIME SPENT = 1.4024 ms
+UserProfile.mon@,250#,==
+TIME SPENT = 1.8894 ms
+
+сетим три кондишена непоследовательные 1 3 2 по порядку 
+првоеряем что они стали ка кнужн ов именах и в значениях 
+
+-----------------------------------------------------------------------
+---------

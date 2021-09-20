@@ -1,0 +1,19 @@
+python %~dp0..\impl\decompressDependencies.py %~dp0..     пайтон 
+RMDIR /S /Q -rf %~dp0..\..\..\..\utils\ABConverter\build
+
+https://hs1git.ab-games.com/-/ide/project/fw/tools/tree/NOJIRA_update_lib_script_konstiantyn.tkachuk/-/scripts/build-vcpkg/impl/build_vcpkg.py/
+
+
+def apply_pack(resultfile):
+	print("vcpkg_apply_pack")
+	shutil.copyfile(resultfile, "../../download/"+resultfile)
+
+
+	def check_environment():
+	global WORKDIR
+	WORKDIR=os.path.dirname(os.path.realpath(sys.argv[0]))+"/"
+	print("WORKDIR="+WORKDIR)
+
+
+
+	
