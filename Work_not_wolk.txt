@@ -1,0 +1,1817 @@
+Експеременты 
+  
+@1 =@2    & @3 = #     & @4 >#        | @1 < #     & @ 2 != # 
+  
+@@=       @#= &          @#> &         @# <     @!=#  & |    
+
+
+(A <= B & C >= D) & (G > F | H > J)
+A@B@<=,C@,D@,>=,&,G@F@,>,H@J@,>,|,&
+UserProfile.money_user@,GlobalConfig.goo[0].awrd@,<=,UserProfile.money@,GlobalConfig.foo.boo@,>=,&,UserProfile.boo@,UserProfile.award01@,>,LocalProfile.lvl@,GlobalConfig.foo@>,|,&
+
+6 из 25 конда 
+
+
+(int A <= float B & float C >= int D) & (int G > -int F | -int H > float J)
+
+
+
+
+-@@=@@=&@@>@@>&|
+(A = B & C = D) | (G>F & H > J)
+
+
+int_1 = '0'
+    int_2 = '111'
+    int_3 = '1000384'
+    int_4 = '-1'
+    int_5 = '12345FF'
+    int_6 = '-333'
+    int_7 = '1'
+    int_8 = '18'
+    int_9 = '971'
+    str_1 = 'Vasya'
+    str_2 = 'Вася'
+    str_3 = '!@#$%^&*()_+'
+    str_4 = 'string with space'
+    str_5 = '555'
+    str_6 = 'a1'
+    str_7 = '0.213'
+    float_1 = '0.1'
+    float_2 = '-9.9165'
+    float_3 = '-0.1'
+    float_4 = '-0.14546676859867987070790897566456465674'
+    float_5 = '2.1'
+    float_6 = '1.0'
+    float_7 = '-18.0'
+    float_8 = '-9.9'
+    float_9 = '29.9999'
+
+
+     section_var_1 = 'UserProfile.money'
+    section_var_2 = 'UserProfile.money_user'
+    section_var_3 = 'UserProfile.award01'
+    section_var_4 = 'UserProfile.chest(15)'
+    section_var_5 = 'UserProfile.chest.21'
+    section_var_6 = 'UserProfile.!@#$%^'
+    section_var_7 = 'UserProfile.12345'
+    section_var_8 = 'UserProfile.........'
+    section_var_9 = 'UserProfile.aw..23'
+    section_var_10 = 'LocalProfile.lvl'
+    section_var_11 = 'UserProfile.boo'
+    section_var_12 = 'GlobalConfig.foo'
+    section_var_13 = 'GlobalConfig.bar'
+    section_var_14 = 'GlobalConfig.noo[0]'
+    section_var_15 = 'GlobalConfig.foo.boo'
+    section_var_16 = 'GlobalConfig.goo[0].awrd'
+    section_var_17 = 'GlobalConfig.conditions'
+
+
+
+
+    UserProfile.money_user@,GlobalConfig.goo[0].awrd@,<=,UserProfile.money@,GlobalConfig.foo.boo@,>=,&,UserProfile.boo@,UserProfile.award01@,>,LocalProfile.lvl@,GlobalConfig.foo@>,|,&
+
+
+    ABUtility timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money_user@,GlobalConfig.goo[0].awrd@,<=,UserProfile.money@,GlobalConfig.foo.boo@,>=,&,UserProfile.boo@,UserProfile.award01@,<,LocalProfile.lvl@,GlobalConfig.foo@,>,|,&
+
+ABUtility timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money_user@,GlobalConfig.goo[0].awrd@,"<"=,UserProfile.money@,GlobalConfig.foo.boo@,">"=,"&",UserProfile.boo@,UserProfile.award01@,"<",LocalProfile.lvl@,GlobalConfig.foo@,">","|","&"
+
+    ABUtility timing 1 set -t int UserProfile.money_user 1 set -t float GlobalConfig.goo[0].awrd 2.1 set -t float UserProfile.money 29.9999 set -t int GlobalConfig.foo.boo 18 set -t int UserProfile.boo -333 set -t int UserProfile.award01 -1 set -t int LocalProfile.lvl -333 set -t float GlobalConfig.foo -9.9165
+
+
+
+    (A <= B & C >= D) & (G < F | H > J)
+
+    A@,B@,<=,C@,D@,>=,&,G@,F@,<,H@,J@,>,|,&
+
+
+    ABUtility timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money_user@,GlobalConfig.goo[0].awrd@,"<"=,UserProfile.money@,GlobalConfig.foo.boo@,">"=,"&",UserProfile.boo@,UserProfile.award01@,"<",LocalProfile.lvl@,GlobalConfig.foo@,">","|","&"
+
+
+
+
+
+(A > B & C > D) & (G < F | H > J | V == N)
+    A@,B@,>,C@,D@,>,&,G@,F@,<,H@,J@,>,|,V@,N@,==,|,&
+
+
+
+UserProfile.money_user@,GlobalConfig.goo[0].awrd@,>,UserProfile.money@,GlobalConfig.foo.boo@,>,&,UserProfile.boo@,UserProfile.award01@,<,LocalProfile.lvl@,GlobalConfig.foo@,<, GlobalConfig.noo[0]@, 
+
+---------------------------------------------------------------------
+
+(A <= B & C >= D) | (G < F & H > J & V == N) 
+
+
+
+
+
+
+-----модернизированный 
+
+ABUtility timing 1 cond offer1 UserProfile.money@,UserProfile.user0@,"<" cond offer2 GlobalConfig.noo[0]@,UserProfile.user1@,"<"= cond offer3 GlobalConfig.foo.boo@,UserProfile.user2@,"<"= cond offer4 GlobalConfig.goo[0].awrd@,UserProfile.user3@,">" cond offer5 UserProfile.boo.goo.awrd[45]@,UserProfile.user4@,">"= cond offer6 UserProfile.money_user@,UserProfile.user5@,">"= cond offer7 UserProfile.award01@,UserProfile.user6@,"<"= cond offer8 LocalProfile.lvl@,UserProfile.user7@,">"= cond offer9 GlobalConfig.root@,UserProfile.user8@,">"= cond offer10 GlobalConfig.bar@,UserProfile.user9@,"<"= set -t int UserProfile.money 555 set -t int GlobalConfig.noo[0] 111 set -t int GlobalConfig.foo.boo 971 set -t float GlobalConfig.goo[0].awrd 0.213 set -t float UserProfile.boo.goo.awrd[45] 0 set -t float UserProfile.money_user -0.1 set -t string UserProfile.award01 Vasya set -t string LocalProfile.lvl "string with space" set -t string GlobalConfig.root Vasya set -t string GlobalConfig.bar Vasya set -t int UserProfile.user0 971 set -t int UserProfile.user1 111 set -t int UserProfile.user2 555 set -t float UserProfile.user3 0.1 set -t float UserProfile.user4 0 set -t float UserProfile.user5 0.1 set -t string UserProfile.user6 1 set -t string UserProfile.user7 "string with space" set -t string UserProfile.user8 Vasya set -t string UserProfile.user9 hi
+
+
+SHA-1: 76f863178904b3632beb1874efbd6c3b76642725
+
+
+ABUtility timing 1 set -t bool UserProfile.money 0
+
+ABUtility timing 1 gettype UserProfile.a get UserProfile.a
+
+
+
+
+
+Да, на обязанности рядового члена команды 
+Он не будет ответвенн за создание процессов, набор и обучение будущей команды
+в его обяззаности будет входить подготовка билда для внутренных демо 
+мануальное функциональное и не функциональноt тестирование
+
+
+
+
+
+
+
+
+ABUtility timing 1 set -t bool UserProfile.money 0 settype UserProfile.money bool gettype UserProfile.money get gettype UserProfile.money
+
+для true & false 
+_____________________settype bool tests 
+
+STR  - ываываыв, выаыва вава,  21ddd,  '' 
+int - 1, -2  0  
+float - 0.1   -0.1     23.1222
+bool - bool true   false ? 
+
+
+
+________________
+
+- тест на сеттайп переменную пустую 
+- тест на смену типа переменных для всех видов типов переменых в буль 
+- тест на сет как 0, 1, True False FALSE TRUE true false none null NULL Null NONE None 
+---------готово
+
+------------------------------------------------------------
+Проверка с кондишенами 
+-- false с 1  с 0 - с строкой с интом  с флоатом 
+- true с 1, с 0 с строкой с интом  с флоатом 
+
+- со строкой Null  none  asedfaefg  " 21123 sddsd"  
+с строкой false true 
+
+- првоерка с несуществующей перменной  на сравнение с false - не должно активировать 
+- на сранвение с пустой переменной типа строка на сравнение с false  - должно активировать 
+
+
+
+ABUtility timing 1 set -t bool UserProfile.money 1 cond offer1 UserProfile.money@,0#,==
+
+ABUtility timing 1 cond offer1 UserProfile.money@,0#,== set UserProfile.f 1
+
+
+@ = false#
+@ = true#
+@ = none#  добавить сравнение сразу с  None NONE Null null NULL 
+@ = 1#  тут переменная 0, 1
+@ = 0#
+@ = 4wefcsde#
+@ = 123223143#
+@ = 0.231445#
+@ = "3df ddd sseqrwetwr"#
+
+
+сет одной переменной последовательно, после кондишена на все требуемые значения сранвения для теста кондишена   
+
+
+повторить с перменная - переменна 
+
++++++++++++++++++++++++++++++++++++++++++++
+Тесты перменная литерал 
+
+
+SHA-1: 3f7f538c9d187f9ce5484f99d517042f80149a2bSHA-1: 3f7f538c9d187f9ce5484f99d517042f80149a2b
+
+
+
+
+ABUtility timing 1 cond offer1 UserProfile.money@,True#,== set -t bool UserProfile.money true
+
+
+==================================================================================================================
+Кондишены на тест перeменной типа date time 
+==================================================================================================================
+
+
+ABUtility timing 1 cond offer1 system.time@,"2021-09-06 12:30:01"#,">"=
+
+
+
+
+
+ABUtility timing 1 cond offer1 system.time@,"2021-09-01 23:59:58"#,"<"
+
+когда текущее время меньше нужного 
+когда больше нужного 
+
+
+2021-09-01 01:01:01#,<=
+
+больше с тем же годом 
+меньше с меньшим годом но большим временем 
+
+
+
+2021-09-01 23:59:58#,>=
+больше с меньшим годом но большим  временем 
+больше с большим годом но меньшим временем 
+
+
+UserProfile.money@,2021-09-01 23:59:58#,>=
+
+
+
+UserProfile.money@,2021-09-01 23:59:58#,>
+меньше 
+равно
+больше 
+
+
+
+UserProfile.money@,2021-09-01 23:59:58#,<
+больше 
+равно 
+меньше 
+
+
+
+
+ABUtility timing 1 cond offer1 UserProfile.t@,"2021-09-01 23:59:58"#,"<"
+ABUtility timing 1 set -t date UserProfile.t "2020-09-03 17:17:16"
+
+
+
+
+UserProfile.money@,UserProfile.money_user@,<='
+
+
+
+больше 
+равно 
+
+меньше 
+равно 
+
+
+
+
+'UserProfile.money@,UserProfile.money_user@,<=
+
+
+
+UserProfile.money@,UserProfile.money_user@,<=
+
+
+
+
+ABUtility timing 1 cond offer1 UserProfile.t@,"2021-09-01 23:59:58"#,"<"
+
+
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.money_user@,<=
+
+
+ABUtility timing 1 set -t date UserProfile.money "2021-10-22 23:59:59" set -t date UserProfile.money_user "2021-08-22 23:59:59" set -t date UserProfile.money_user "2021-10-22 23:59:59"  
+
+
+ABUtility timing 1 set -t date UserProfile.money "2021-08-11 23:59:59" set -t date UserProfile.money_user "2020-09-03 17:17:16" set -t date UserProfile.money_user "2021-09-01 01:01:01"
+
+
+================================================
+UserProfile.money@,UserProfile.money_user@,==
+
+
+
+
+
+
+
+ABUtility timing 1 cond offer2 UserProfile.money@,"2021-08-11 23:59:59"#,"!"= set -t date UserProfile.money "2021-08-11 23:59:59" set -t date UserProfile.money "2021-09-01 23:59:59" set -t date UserProfile.money "2021-08-11 23:59:59"
+
+
+
+ABUtility timing 1 set GlobalConfig.conditions[1].name offer1 set GlobalConfig.conditions[1].conditional UserProfile.money@,0#,==
+
+
+
+
+ABUtility timing 1 set -t string UserProfile.a 
+
+
+
+
+2051-feb-12 12:12:11
+
+20511212 231211
+34dfsgf33 3423f
+2051-14-12 25:23:23
+
+
+25:23:23 2051-14-12
+
+111
+string with space'
+
+'12345FF'
+2051:14:12 25:23:23'
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.a@,UserProfile.b@,">",UserProfile.c@,UserProfile.d@,">","|"
+
+
+ABUtility network 0 timing 1 set -t int UserProfile.a 2 set -t int UserProfile.b 1 set -t int UserProfile.c 3 set -t int UserProfile.d 3
+
+
+Допустимые имена 
+UP.s
+UP.S
+UP.sdsdsdwagERREFEFFvcvdcve 
+UP._
+
+
+Недопустимые варианты для теста 
+UP.1
+UP.2dgdrhfh
+UP.[1]
+UP.[]
+UP.. 
+UP..es 
+UP.dfd..dfdfd
+
+
+UserProfile.chest.21
+
+
+
+ABUtility timing 1 set UserProfile.chest.21 2147483646
+
+
+Сделал на 
+
+UserProfile.chest.21
+UserProfile.!@#$%^
+UserProfile.12345
+UserProfile.........
+UserProfile.aw..23
+UserProfile.2dgdrhfh
+UserProfile.[]
+UserProfile.[1]
+UserProfile..
+UserProfile.er..d
+UserProfile.u.s.e.r.ffff.0
+'UserProfile.[1]user
+
+
+
+
+
+сделать отдельно на сет по типам данных - OK 
+
+
+
+
+
+
+отдельно геттайп - одна строка - OK 
+отдельно сет тайп и тут же гет тайп - получаем всегда none - OK 
+отдельно для реордера =- получение ошибки при невалидном имени ?  - OK 
+
+тесты на валидное значение? пройти вручную - OK
+
+
+
+================================================
+
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\1.jpg" UserProfile.chest1
+ABUtility timing 1 get UserProfile.chest1
+
+
+ABUtility timing 1 set -t binary UserProfile.chest1 " akl;sdjfa;lkhngalekrhga;ehga; gaeirlgae;trjg;qeior ge;rqjg pqer;ia'eioh"
+
+
+
+
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\1.jpg" UserProfile.chest1
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\2.jpg" UserProfile.chest2
+
+
+
+
+
+++++++++++++++++++
+краш по сравнению 
++++++++++++++++
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.chest1@,UserProfile.chest2@,==
+TIME SPENT = 0.0406 ms
+TIME SPENT = 0.0256 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\1.jpg" UserProfile.chest1
+TIME SPENT = 8.4967 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\2.jpg" UserProfile.chest2
+TIME SPENT = 0.0556 ms
+
+C:\Users\oleg.krivov\Desktop\test\ABUtility>ABUtility timing 1 set -t bool UserProfile.chest2 true
+================================
+
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,"2021-09-01 23:59:58"#,">"=
+ABUtility network 0 timing 1 set -t date UserProfile.money "2021-08-22 23:59:59"
+ABUtility network 0 timing 1 set -t date UserProfile.money "2021-12-12 23:23:23"
+ABUtility network 0 timing 1 set -t date UserProfile.money "1970-01-01 00:00:00"
+ABUtility network 0 timing 1 set -t date UserProfile.money "2021-08-22 23:59:59"
+ABUtility network 0 timing 1 set -t date UserProfile.money "2021-09-01 23:59:58"
+
+
+
+UserProfile.money@,2021-09-01 23:59:58#,>=
+
+
+
+
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,"2021-09-01 23:59:58"#,">"=
+ABUtility network 0 timing 1 set -t date UserProfile.money "2021-08-22 23:59:59" set -t date UserProfile.money "2021-12-12 23:23:23"
+
+ABUtility network 0 timing 1 set -t date UserProfile.money "1970-01-01 00:00:00" set -t date UserProfile.money "2021-08-22 23:59:59" set -t date UserProfile.money "2021-09-01 23:59:58"
+
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\1.jpg" UserProfile.f set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\3.jpg" UserProfile.a
+
+
+
+ABUtility timing 1 get UserProfile.f get UserProfile.a
+
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\sound.mp3" UserProfile.f1
+
+ABUtility timing 1 get UserProfile.f get UserProfile.f1
+
+
+
+
+----------------
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\1.jpg" UserProfile.f set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\3.jpg" UserProfile.a
+
+ABUtility timing 1 get UserProfile.f get UserProfile.a
+
+ABUtility timing 1 set -t binary UserProfile.f "sdfagsrgeyu" set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\3.jpg" UserProfile.a set -t binary UserProfile.f1 "sdfagsrgeyu"
+
+ABUtility timing 1 get UserProfile.f get UserProfile.a get UserProfile.f1
+
+ABUtility timing 1 set -t binary UserProfile.f "sdfagsrgeyu" set -t int UserProfile.t 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\3.jpg" UserProfile.a set -t binary UserProfile.f1 "sdfagsrgeyu" set UserProfile.h sads set -t binary UserProfile.f3 "sdfagsrgeyu"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\1.jpg" UserProfile.chest1
+
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\2.jpg" UserProfile.chest2
+
+
+ABUtility timing 1 set -t bool UserProfile.chest2 true
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ABUtility network 0 timing 1 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
+
+
+
+
+=============================
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.money@,UserProfile.money_user@,"!"=
+
+ABUtility network 0 timing 1 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\2.png" UserProfile.money set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\2.png" UserProfile.money_user set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\3.jpg" UserProfile.money_user
+
+ 
+
+ABUtility network 0 timing 1 get GlobalConfig.conditions[1].name get GlobalConfig.conditions[1].conditional
+
+
+
+
+
+
+
+ 
+ABUtility network 0 timing 1 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\0.jpg" UserProfile.money1 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\1.jpg" UserProfile.money2 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\2.png" UserProfile.money3 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\3.jpg" UserProfile.money4 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\4.jpg" UserProfile.money5 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\sound.mp3" UserProfile.money6 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money7 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\6.txt" UserProfile.money8
+
+
+ABUtility network 0 timing 1 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money1 get UserProfile.money1 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money2 get UserProfile.money2 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money3 get UserProfile.money3 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money4 get UserProfile.money4 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money5 get UserProfile.money5 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money6 get UserProfile.money6 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money7 get UserProfile.money7 set -t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money8 get UserProfile.money8
+
+
+
+
+
+
+get UserProfile.money1
+
+b'TIME SPENT = 0.0308 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.3465 ms\r\nTIME SPENT = 0.0214 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.0417 ms\r\nTIME SPENT = 0.0089 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.0399 ms\r\nTIME SPENT = 0.0098 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.0178 ms\r\nTIME SPENT = 0.0077 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.0151 ms\r\nTIME SPENT = 0.0076 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.0282 ms\r\nTIME SPENT = 0.0109 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.0163 ms\r\nTIME SPENT = 0.0071 ms\r\n010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010\r\nTIME SPENT = 0.031 ms\r\n'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
