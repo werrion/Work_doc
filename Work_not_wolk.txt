@@ -551,6 +551,16 @@ b'TIME SPENT = 0.0308 ms\r\n0100101010101010101110110100101010010101011111110101
 
 
 
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.a@,UserProfile.b@,"!"=
+
+
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\1.jpg" UserProfile.a set -t int UserProfile.b 111 settype UserProfile.a none settype UserProfile.b none
+
+ABUtility timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\2.jpg" UserProfile.a set -t float UserProfile.b 11.1 settype UserProfile.a none settype UserProfile.b none
+
+
+ABUtility network 0 timing 1 set -t binary -f C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\0.jpg UserProfile.money set -t int UserProfile.money_user 111 settype UserProfile.money_user none settype UserProfile.money none 
 
 
 
@@ -562,6 +572,28 @@ b'TIME SPENT = 0.0308 ms\r\n0100101010101010101110110100101010010101011111110101
 
 
 
+ABUtility network 0 timing 1 log custom Level:2, energy:123, money:999" log custom "Level:2, energy:123, money:999" log custom "Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999"
+
+
+
+
+
+
+По доработке утилиты под новые праметры: 
+1. сделать по аналогии с другими командами - set имя set кондишен set настройка онлифанс set переменная активности (activ\passiv) 
+завести под них зарезервированные секции с такими наваниями 
+2. что мы решаем по моментальным кондишенам? мы им будем задавать ети же праметры? по идее нужно 
+предлагаю так же - cond имя кондишен параметр_онлифанс параметр_активен ? хотя последний не нужен? хотя они могут захотеть во время сесии создать но активировать не сразу а после?
+3. могу ли я менять динамически ети параметры? для простого и моментального кондишена и сразу в динамике они вычитабтся? 
+4. уточни значения по умолчанию - многоразовый  - активен? 
+5. как точно задавать данные параметры - как 1-0, как були, словами enable\disable ?
+6. просьба сразу в хелп добавлять доработки команд в утилите описание
+
+
+
+
+Неостановимые динамические кондишены: 
+1. 
 
 
 
@@ -572,22 +604,32 @@ b'TIME SPENT = 0.0308 ms\r\n0100101010101010101110110100101010010101011111110101
 
 
 
+заведенные ранее в прошлую сессию 
+заведенные в етой сессии 
 
+создан как отключен 
+создан как включен 
 
+создан как одноразовый 
+создан как многоразовый 
 
+изменяю параметры в динамике 
+затираю существующий пустым 
+затираю новым - старый отключаем новый включаем 
+новый получает параметры всегда заново? - если одни заменяю другим? 
 
+учесть что у нас он может активироватсья в одной сесии несколько раз(многорахзовые) 
+проверка на активацию по параметру - одноразовый - активен - был активирован ранее в данной сесии ? 
 
+кейс с реордером - удалили - пересчитали - не поменялось ничего 
 
+кейс добавление нового кондишена если он активен - если он не активен 
 
+кейс когда был ранее создан неактивный и мы меняем ему статус на активный
+если бы не активен то нет повешенызх лиснеров и неработает правило активаци один раз в сутки - в плане что он не трекунлся ка квыполненые ранее услвоия 
 
-
-
-
-
-
-
-
-
+если создаем кондишен - активен и услвоия сразу выполненые - чтоб сработала активация сразу и сразу при создании поменлся параметр на отработавший 
+(вычитка кондишена происходит после задавния всех параметров а непосле задавания самого кондишена  чтоб мы не перехатерли задавнием парметра онлифанс )
 
 
 
