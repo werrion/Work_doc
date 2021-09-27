@@ -636,12 +636,17 @@ ABUtility network 0 timing 1 log custom Level:2, energy:123, money:999" log cust
 
 
 
+по умолчанию енейбл  - тру 
+многоразовый тру 
+
+можно задавать три два или четыре 
 
 
+тест или по две или по четыре перменных - для стандартного кондишена 
 
 
-
-
+set cond offer1 UserProfile.money@,UserProfile.user0@,"<" enable/disable regular/onetime set UserProfile.money 5
+set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.a@,UserProfile.b@,"!"= set UserProfile.rules[0].enable enable/disable UserProfile.rules[0].onetime regular/onetime
 
 
 
