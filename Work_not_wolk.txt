@@ -64,7 +64,7 @@ int_1 = '0'
     section_var_14 = 'GlobalConfig.noo[0]'
     section_var_15 = 'GlobalConfig.foo.boo'
     section_var_16 = 'GlobalConfig.goo[0].awrd'
-    section_var_17 = 'GlobalConfig.conditions'
+    section_var_17 = 'GlobalConfig. itions'
 
 
 
@@ -565,13 +565,6 @@ ABUtility network 0 timing 1 set -t binary -f C:\Users\oleg.krivov\Desktop\test\
 
 
 
-
-
-
-
-
-
-
 ABUtility network 0 timing 1 log custom Level:2, energy:123, money:999" log custom "Level:2, energy:123, money:999" log custom "Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log error "Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999" log custom Level:2, energy:123, money:999"
 
 
@@ -651,6 +644,56 @@ set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserPr
 
 
 
+ABUtility network 0 timing 1 cond offer1 UserProfile.money@,1#,">" cond offer2 UserProfile.money@,1#,">" cond offer3 UserProfile.money@,1#,">" cond offer4 UserProfile.money@,1#,">" cond offer5 UserProfile.money@,1#,">" cond offer6 UserProfile.money@,1#,">" cond offer7 UserProfile.money@,1#,">" cond offer8 UserProfile.money@,1#,">" cond offer9 UserProfile.money@,1#,">" cond offer10 UserProfile.money@,1#,">" set -t int UserProfile.money 0 set -t int UserProfile.money 111 
+
+
+
+ABUtility network 0 timing 1 set cond offer1 UserProfile.money@,1#,">"
+
+
+
+есть две таблицы 
+в одной данные завязанные на айди с другой таблицы 
+во второй таблице привязанно 
+
+
+SELECT name FROM sections_int_values INNER JOIN section_key_names ON id = sections_names_id WHERE player_id = 1
+
+
+
+SELECT value FROM sections_int_values INNER JOIN section_key_names ON section_key_names.id = sections_names_id WHERE sections_int_values.player_id = 1 and section_key_names.name = `name1`
+
+
+
+UserProfile.boo
+
+
+
+
+
+ABUtility network 0 timing 1 log custom "custom log"
+ABUtility network 0 timing 1 log error "error log"
+ABUtility network 0 timing 1 log custom "custom log"
+
+ABUtility network 0 timing 1 log custom "custom log" log error "error log" log custom "custom log"
+
+
+
+
+ABUtility network 0 timing 1 log custom "custom log"
+ABUtility network 0 timing 1 log grindEnd "endGrind log"
+ABUtility network 0 timing 1 log custom "custom log"
+
+ABUtility network 0 timing 1 log custom "custom log" log endGrind "endGrind log" log custom "custom log"
+
+
+
+ABUtility network 0 timing 1 log error "error log"
+ABUtility network 0 timing 1 log grindEnd "endGrind log"
+ABUtility network 0 timing 1 log error "error log"
+
+
+ABUtility network 0 timing 1 log error "error log" log grindEnd "endGrind log" log error "error log"
 
 
 
@@ -683,6 +726,69 @@ set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserPr
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+f3 - открытие 
+f10 закрытие 
+mc переход в командер 
+sudo ./start_server.sh - старт сервера от админ прав 
+
+
+
+
+
+
+
+зайти в путти выбрать сессию 
+ввести mc 
+перейти на папку логов 
 
 
 
