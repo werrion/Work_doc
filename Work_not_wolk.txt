@@ -697,13 +697,8 @@ ABUtility network 0 timing 1 log error "error log" log grindEnd "endGrind log" l
 
 
 
-
-
-
-
-
-
-
+Блок редактирования аккаунт специфических параметров игрока (общий для всех проектов)
+По умолчанию скрыт. Отображается по клику на элементе:
 
 
 
@@ -780,7 +775,8 @@ f10 закрытие
 mc переход в командер 
 sudo ./start_server.sh - старт сервера от админ прав 
 
-
+ps 
+ps -Afl|grep abgserver
 
 
 
