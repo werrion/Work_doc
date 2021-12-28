@@ -688,7 +688,7 @@ ABUtility network 0 timing 1 log custom "custom log" log endGrind "endGrind log"
 
 
 
-ABUtility network 0 timing 1 log error "error log"
+ABUtility network 0 timing 1 log error "Вася"
 ABUtility network 0 timing 1 log grindEnd "endGrind log"
 ABUtility network 0 timing 1 log error "error log"
 
@@ -704,6 +704,7 @@ ABUtility network 0 timing 1 log error "error log" log grindEnd "endGrind log" l
 
 
 
+ABUtility network 0 timing 1 set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserProfile.a@,"ἱερογλυφικὰγράμματα異体字漢字hànzì汉字"#,== set UserProfile.a "ἱερογλυφικὰγράμματα異体字漢字hànzì汉字" 
 
 
 
@@ -712,6 +713,14 @@ ABUtility network 0 timing 1 log error "error log" log grindEnd "endGrind log" l
 
 
 
+ABUtility network 1 timing 1 wait 2000 log error "Вася" wait 2000
+
+
+
+
+
+
+ABUtility network 0 timing 1 wait 1000 log grindEnd "0 5 5 5 5 6 7 8 9 0 1" log error "time" log custom "time"
 
 
 
@@ -720,6 +729,40 @@ ABUtility network 0 timing 1 log error "error log" log grindEnd "endGrind log" l
 
 
 
+ABUtility network 1 timing 1 wait 2000 log custom "2 2" wait 2000
+ABUtility network 1 timing 1 wait 2000 log custom "_2" wait 2000
+
+ABUtility network 1 timing 1 wait 2000 log error "Vasya" wait 2000
+ABUtility network 1 timing 1 wait 2000 log error ""Вася"" wait 2000
+ABUtility network 1 timing 1 wait 2000 log error "!@#$%^&*()_+" wait 2000
+ABUtility network 1 timing 1 wait 2000 log error "string with space" wait 2000
+ABUtility network 1 timing 1 wait 2000 log error "555" wait 2000
+
+
+
+ABUtility timing 1 network 1 wait 2000 log custom "Error  -info: zglkdfgdfg fdlkgndkjh fg mdlfk nld fdsg mdflkg mdlf fd gklldmfg kdlkg  234234 43 234 23423423j4 j23k4 j23k4 23l4 k2l35j5j2l35j22 2l3k 42l3 j2l 2  |||||??>.!@#$%^&*(())_ *&^% $ $#$ MJHBGF HFHKJFHKJ ~~~~~ %^&**(()())" wait 2000
+
+
+172.28.240.1
+
+
+ABUtility network 1 timing 1 log custom "2 2"
+
+
+
+
+
+>ABUtility timing 1 network 1 wait 2000 log custom "erwrgrewtrh" wait 2000
+
+
+
+
+ ps -Afl|grep abserver
+
+
+
+oleg.krivov@ab-debian-do1:/opt/abframework/scripts$ cd /opt/abframework/
+oleg.krivov@ab-debian-do1:/opt/abframework$ sudo chmod -R 777 bin
 
 
 
@@ -727,45 +770,7 @@ ABUtility network 0 timing 1 log error "error log" log grindEnd "endGrind log" l
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<function del_log_dump_file at 0x0000000004B8A430>
 
 
 
@@ -773,14 +778,19 @@ ABUtility network 0 timing 1 log error "error log" log grindEnd "endGrind log" l
 f3 - открытие 
 f10 закрытие 
 mc переход в командер 
+
+cd /opt/abframework/scripts/
 sudo ./start_server.sh - старт сервера от админ прав 
+ ping analytics.amplitude.com
 
 ps 
-ps -Afl|grep abgserver
+sudo ps -Afl|grep abgserver
 
 
+cd /opt/abframework/scripts/
 
-
+sudo killall abgserver 
+sudo reboot 
 
 зайти в путти выбрать сессию 
 ввести mc 
@@ -788,27 +798,34 @@ ps -Afl|grep abgserver
 
 
 
+لقب‎
 
 
+    del_log_dump_file() в 220
 
 
 
 
+ABUtility timing 1 network 1 wait 2000 log custom "1" log custom "2" log custom "3" log custom "4" log custom "5" log custom "6" log custom "7" log custom "8" log custom "9" log custom "10" log custom "11" log custom "12" log custom "13" log custom "14" log custom "15" log custom "16" log custom "17" log custom "18" log custom "19" log custom "20" wait 2000
 
 
 
 
 
 
+gameSessionId
 
 
+SystemLocal.sessions.login.userId
 
 
 
+DELETE FROM sections_string_values WHERE player_id >=0
 
 
 
 
+ABUtility network 1 timing 1 wait 1000 set UserProfile.rules[0].name offer_t_1 set UserProfile.rules[0].conditional UserProfile.money_user@,GlobalConfig.goo@,==
 
 
 
@@ -824,6 +841,7 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility timing 1 network 1 wait 1000 log custom "1" log custom "2" log custom "3" log custom "4" log custom "5" log custom "6" log custom "7" log custom "8" log custom "9" log custom "10" log custom "11" log custom "12" log custom "13" log custom "14" log custom "15" log custom "16" log custom "17" log custom "18" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20" log custom "19" log custom "20" log custom "20" log custom "20" log custom "20"
 
 
 
@@ -856,15 +874,28 @@ ps -Afl|grep abgserver
 
 
 
+вайп 
+сет  
+регистер 
+вайп 
+чендж 
+гет 
 
 
 
+вайп файлов 
 
+ABUtility timing 1 network 1 wait 1000 set UserProfile.t 1 get SystemLocal.sessions.login.userId
 
+ABUtility timing 1 network 1 wait 1000 register_user test_2 XXX 123 get SystemLocal.sessions.login.userId get UserProfile.t
 
+вайп файлов 
 
+ABUtility timing 1 network 1 wait 1000 get SystemLocal.sessions.login.userId
 
+ABUtility timing 1 network 1 wait 1000 change_user test_6 123 get SystemLocal.sessions.login.userId get UserProfile.t
 
+ABUtility timing 1 network 1 wait 1000 get UserProfile.t get SystemLocal.sessions.login.userId
 
 
 
@@ -875,21 +906,33 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility timing 1 cond offer1 system.time@,"2021-11-01 15:30:01"#,">"=
 
 
 
 
 
+ABUtility timing 1 network 1 wait 1000 register_user mail Vas1 12345
 
 
+ABUtility timing 1 network 0 wait 1000 log custom "123" get SystemLocal.sessions.login.userId
 
+ABUtility timing 1 network 0 wait 1000 log custom "1234" log custom "12345"
 
+ABUtility timing 1 network 1 wait 1000 change_user  get SystemLocal.sessions.login.userId
 
 
 
 
+player 10304   UserProfile.a 1 
 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+ABUtility timing 1 network 1 wait 1000 get SystemLocal.sessions.login.userId set UserProfile.a 1
+ABUtility timing 1 network 1 wait 1000 register_user mail Vas1 12345 get SystemLocal.sessions.login.userId
+вайп 
+ABUtility timing 1 network 1 wait 1000 get SystemLocal.sessions.login.userId set UserProfile.a 2
+ABUtility timing 1 network 1 wait 1000 register_user mail Vas2 12345 get SystemLocal.sessions.login.userId
 
 
 
@@ -921,19 +964,25 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility network 0 timing 1 set GlobalConfig.conditions[1].name offer7634234_chest set GlobalConfig.conditions[1].conditional UserProfile.money@,UserProfile.money_user@,"!"=
 
 
+ABUtility network 0 timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010" set -t string UserProfile.money_user 'Vasya'
 
 
 
 
+ABUtility network 0 timing 1 cond offerr12 UserProfile.money@,UserProfile.money_user@,"!"= set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010" set -t string UserProfile.money_user 'Vasya'
 
 
 
+ABUtility network 1 timing 1 wait 1000 log custom "test1" wait 100000 log custom "test2" wait 30000 log custom "test3"
 
+ABUtility network 1 timing 1 wait 60000 log error "error1" wait 30000 log error "error2" 
 
 
 
+4921a5d5dad9acfe6f237290743002219a3b43c0
 
 
 
@@ -941,6 +990,7 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility network 1 timing 1 wait 1000 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
 
@@ -948,6 +998,7 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility network 0 timing 1 set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f 
 
 
 
@@ -958,31 +1009,43 @@ ps -Afl|grep abgserver
 
 
 
+BUtility network 0 timing 1 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.fset -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.fset -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.fset -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.fset -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.fset -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.fset -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.fset -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f
 
+ABUtility network 0 timing 1 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t int UserProfile.sdsd 12331231 
 
 
 
 
+ABUtility network 0 timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t int UserProfile.money_user 123333 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f
 
 
 
 
+ABUtility network 0 timing 1 set UserProfile.rules[1].name offer1 set UserProfile.rules[1].conditional UserProfile.money_user@,"Вася"#,==' set -t int UserProfile.money_user 123333 set -t int UserProfile.sds 12331231 set -t float UserProfile.fdf 12.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f
 
 
 
 
 
+бинарь 1  money
 
+int 2
+flota 1 
+string 1
 
 
 
 
 
 
+ 
+ABUtility network 1 timing 1 wait 1000 cond offer7634234_chest UserProfile.money@,UserProfile.money_user@,"!"= set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t int UserProfile.money_user 1 set -t int UserProfile.sds 3 set -t float UserProfile.fdf 11.1 set UserProfile.dfd "ываы  sds   1121 ^%$%$$%^&*( ) " set -t string UserProfile.ddd ffftfree get UserProfile.dfdf gettype UserProfile.f set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.moneqy cond offer763423w4_chest UserProfile.money@,UserProfile.money_user@,== set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.monwwey set -t int UserProfile.money_1user 3 set -t int UserProfile.s1ds 4 set -t float UserProfile.fd1f 22.2 set UserProfile.df1d "22222222 222 2222" 
+ 
 
 
 
 
+++++++++++++++++++++++++
 
 
 
@@ -990,24 +1053,34 @@ ps -Afl|grep abgserver
 
 
 
+>ABUtility network 1 timing 1 wait 1000 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+ABUtility network 1 timing 1 wait 1000 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya"
 
+>ABUtility network 1 timing 1 wait 1000 set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+ABUtility network 1 timing 1 wait 1000 set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user1 "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+ABUtility network 1 timing 1 wait 1000 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
 
+ABUtility network 1 timing 1 wait 1000 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+ABUtility network 1 timing 1 wait 1000 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+>ABUtility network 1 timing 1 wait 1000 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user1212 "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+ABUtility network 1 timing 1 wait 1000 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user1212 "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+ABUtility network 1 timing 1 wait 1000 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t int UserProfile.money_user 123333
 
 
 
@@ -1033,6 +1106,10 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId set UserProfile.v 12 set LocalProfile.v 12
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId register_user vas1 V 111
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId logout get UserProfile.v
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId get UserProfile.v get LocalProfile.v
 
 
 
@@ -1043,48 +1120,78 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId set UserProfile.v 14 set LocalProfile.v 14
+ABUtility network 0 timing 1 wait 1000 get SystemLocal.sessions.login.userId register_user vas1121 V 111
+ABUtility network 0 timing 1 wait 1000 get SystemLocal.sessions.login.userId register_user vas1121 V 111
+ABUtility network 0 timing 1 wait 1000 get SystemLocal.sessions.login.userId register_user vas1121 V 111
+ABUtility network 0 timing 1 wait 1000 get SystemLocal.sessions.login.userId register_user vas1121 V 111
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId register_user vas222 V 111   
 
 
 
 
+network', '0', 'timing', '1'], command = 'settype'
+section_var = 'UserProfile.', value = 'int', command1 = 'gettype'
+section_var1 = 'UserProfile.'
 
 
+ABUtility network 0 timing 1 settype UserProfile int gettype UserProfile
 
 
 
++++++++++++++++++++++++++++++++++++++++
 
+1.
+ABUtility network 1 timing 1 wait 30000 get SystemLocal.sessions.login.userId log custom "Custom test log" wait 30000
 
+старт - отрубить инет - врубить инет после записи лога в дамп - дождаться отправки - проверить в базе и проверить в дампе 
 
 
+ABUtility network 1 timing 1 wait 30000 get SystemLocal.sessions.login.userId log custom "1 log" wait 30000 log custom "2 log"
 
+2. ABUtility network 1 timing 1 wait 30000 log custom "Custom test log" wait 300000
 
 
 
 
 
+команды одна за одной с вейтом небольшим отрубить врубить инте несколько раз 
+в базу ушли все логи  
 
+===================================
 
 
 
+ABUtility network 1 timing 1 wait 15000 get SystemLocal.sessions.login.userId log custom "1 log" wait 15000 log custom "2 log" wait 500
 
 
 
+___________________________________________
+тест вложеных чайлдов при реордере 
 
 
 
+если он был массивом то всем элементам чайлдам поставить тип нан  ? 
 
 
 
 
 
 
+UserConfig.level set none 
 
+UserConfig.level[1] set nonу  
+тесты на удаление чайлдов 
 
 
 
 
 
+при условии 
 
+UserConfig.level[1].ываыва
+UserConfig.level[1].sdfsd[1] 
+UserConfig.level[2]
 
 
 
@@ -1093,6 +1200,7 @@ ps -Afl|grep abgserver
 
 
 
+cd /users/admin/ws/abf/ABUtility 
 
 
 
@@ -1100,9 +1208,17 @@ ps -Afl|grep abgserver
 
 
 
+-=++++++++++++
 
 
+- отправка лога с удалением  
+- отправка лога без удаления 
+- отправка перменной с удалением 
+- отправка перменной без удаления 
+- отправка и гет перменной без удаления  
+- отправка ит гет переменных с удалением
 
+- отправка лога с дампа с командами онлайн в следующей сессии 
 
 
 
@@ -1119,6 +1235,7 @@ ps -Afl|grep abgserver
 
 
 
+"10.2.10.11
 
 
 
@@ -1126,15 +1243,21 @@ ps -Afl|grep abgserver
 
 
 
+cmd от админа 
+>wsl --install -d Debian
 
 
 
 
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId log custom "1 log" wait 500 log custom "2 log" wait 500
 
+ABUtility network 1 timing 1 wait 1000 get SystemLocal.sessions.login.userId set UserProfile.fff 343 set UserProfile.ffwf 343 set UserProfile.ffwwf 34ww set UserProfile.fffwew 3445 set UserProfile.wwwwfff 34eee log custom "2 log" wait 500
 
 
 
 
+1234
+assert os.access(os.getcwd() + '/dump/logger', os.F_OK)
 
 
 
@@ -1142,21 +1265,28 @@ ps -Afl|grep abgserver
 
 
 
+ABUtility network 0 timing 1 get SystemLocal.sessions.login.userId get SystemLocal.sessions.login.sessionId get SystemLocal.sessions.login.authKey get SystemLocal.sessions.game.id
+ SystemLocal.sessions.game.id
 
 
 
 
 
 
+psycopg2.OperationalError: could not connect to server: Connection timed out (0x0000274C/10060)
+E           Is the server running on host "ab-postgresql-db1-do-user-9677929-0.b.db.ondigitalocean.com" (139.59.130.115) and accepting
+E           TCP/IP connections on port 25060?
 
 
 
 
 
+get_max_id_from_table
 
 
 
 
+SELECT count(id) FROM sections_int_values; 9569
 
 
 
@@ -1172,10 +1302,16 @@ ps -Afl|grep abgserver
 
 
 
+- через время флаки? через макс айди сделать? 
+- всегда проверят ьчто гейм сессия закрытая 
+- доабвить проерку на логи сесии наличия параметра ключа на длинну проерки 
+- добавить дебаг инфу 
 
 
 
+SELECT MAX(id) FROM login_sessions WHERE player_id = '11'; 
 
+SELECT state FROM login_sessions WHERE player_id = '11' and id = (SELECT MAX(id) FROM login_sessions WHERE player_id = '11')
 
 
 
@@ -1185,66 +1321,15 @@ ps -Afl|grep abgserver
 
 
 
+ cat /opt/abframmework/log/abserver.log | grep "\[error\]"
 
 
 
 
+INSERT into sections_string_values SET player_id=15888, section_key_names=37, value="value_test" 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ABUtility timing 1 network 1 wait 1000 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files_for_scripts\3.jpg" UserProfile.bi1
 
 
 
