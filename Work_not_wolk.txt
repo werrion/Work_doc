@@ -655,8 +655,13 @@ set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserPr
 
 
 
+по 133 
+1. если я задал кондишен через две перменные - то параметры onetime и enable не создатся в перменных автоматом?  
+Сейчас пока нет динамики будет проверятся - и если такой переменной нет то значение по умолчанию? 
+2. 
 
 
+ABUtility timing 1 network 0 set UserProfile.conditions[0].name Offer1 set UserProfile.conditions[0].conditional UserProfile.money@,111#,== set UserProfile.conditions[0].enable disable UserProfile.conditions[0].onetime regular
 
 
 
@@ -669,8 +674,10 @@ set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserPr
 
 
 
+memory at 0x000002CC4F48B700   6
 
 
+          0x000002CC4F63EF40
 
 
 
@@ -685,6 +692,7 @@ set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserPr
 
 
 
+ABUtility timing 1 network 0 wait 1000 set UserProfileUserProfile.rules[0].name Offer1 set UserProfile.rules[0].conditional UserProfile.money@,GlobalConfig.foo[0]@,== get UserProfileUserProfile.rules[0].name get UserProfile.rules[0].conditional get UserProfile.conditions[0].enable get UserProfile.conditions[0].onetime
 
 
 
@@ -694,52 +702,84 @@ set UserProfile.rules[0].name offer1 set UserProfile.rules[0].conditional UserPr
 
 
 
+ABUtility timing 1 network 0 wait 1000 log custom "1" wait 3000 log custom "2" wait 3000 log custom "3" wait 3000 log custom "4" wait 3000 
 
 
+- регистрация нового игрока и проврека данных в БД - OK 
+- смена чистого игрока на загераного?смена зареганного игрока на другого зареганного ok
+- попытка регистрации нового игрока когда такой мейл уже зарегестрирован - ok 
+- переключение на не существующего игрока - (неверный имейл) - OK
+- переключение на существующего игрока - (неверный пароль) - OK 
+- регистрация игрока с неверными данными - не мейл, не верные символы и тд. - не реализованно 
 
 
+- создать нового игрока - засетить ему данные в профайл - создать нового игрока и подтянуть ети данные? ручной режим? првоерка на данные профайла что подтянулись нужные, что удалились старые, что увеличился сешн логин айди - 
 
+проверка повышения логин айди при успешном преключениина старого игрока 
+проверка что увеличился сешн логин айди - 
 
+тесты в одной сесии в разных -
 
+- проверка логаута - выход на нового игрока (с потерей данных?)
 
 
 
+- провести ручной тест на двух девайсах - не выходя их одного - вейт поставить длинный в утилите и зайти на етот же ак на другом компе (создать игрока, зарегатся через длинный вейт на него - зайти на дргуом компе на этого же игрока )
 
 
+ABUtility timing 1 network 1 wait 1000 change_user 666 1112 get UserProfile.a get UserProfile.s
+ABUtility timing 1 network 1 wait 1000 logout
+-------------------
 
 
+- проверка на активную сессию на прошлую 
 
 
+get SystemLocal.sessions.game.id
+get SystemLocal.sessions.login.userId
+get 
 
 
+-------------------
 
 
 
 
 
+network 0 timing 1 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set t binary -f "C:\\Users\\oleg.krivov\\Desktop\\test\\models\\files__for_scripts\\5.txt" UserProfile.money set -t  string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010
 
 
 
 
+ABUtility network 0 timing 1 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t  string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010
 
 
 
+ABUtility network 0 timing 1 cond _offer1 UserProfile.money@,UserProfile.money_user@,== set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "Vasya" set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
+ABUtility network 0 timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money
+ABUtility network 0 timing 1 set -t string UserProfile.money_user "Vasya"
 
+ABUtility network 0 timing 1 set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010"
 
 
 
 
+ABUtility network 0 timing 1 set GlobalConfig.conditions[1].name offer7634234_chest set GlobalConfig.conditions[1].conditional set UserProfile.money@,UserProfile.money_user@,"!"=
 
 
 
+ABUtility network 0 timing 1 set -t binary -f "C:\Users\oleg.krivov\Desktop\test\models\files__for_scripts\5.txt" UserProfile.money set -t string UserProfile.money_user "010010101010101010111011010010101001010101111111010101011010010101010100000100100101010010101001001010" set -t string UserProfile.money_user 'Vasya'
 
 
 
 
+ABUtility network 1 timing 1 wait 1000 change_user test_2_acc@gmail.com 111 get UserProfile.money get UserProfile.award01
 
 
+
+дописать тесты 
 
 
 
