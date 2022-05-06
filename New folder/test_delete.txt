@@ -1,0 +1,21 @@
+debug timing 1 network 1 
+waitto init 1000
+set -t int UserProfile.test1int 3
+wait 1000
+set -t string UserProfile.test1int line5
+wait 1000
+
+
+set -t string UserProfile.test2.aaa line9
+set -t string UserProfile.test2.aaa.ccc line10
+set -t string UserProfile.test2.aaa.ddd[0] line11
+set -t string UserProfile.test2.aaa.ddd[1] line12
+set -t int UserProfile.test2.aaa.ddd[2] 13
+set -t int64 UserProfile.test2.aaa.ddd[3] 14
+set -t float UserProfile.test2.aaa.ddd[3] 15
+
+wait 1000
+
+settype UserProfile.test2 none
+
+wait 1000

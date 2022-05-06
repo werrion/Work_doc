@@ -1,0 +1,23 @@
+#this is comment
+#debug timing 1 network 1 wait 1000 register_user AT51 AT51 AT51
+#debug timing 1 network 1 wait 1000 logout
+#debug timing 1 network 1 wait 1000 register_user AT52 AT52 AT52
+#debug timing 1 network 1 wait 1000 change_user AT52 AT52
+#debug timing 1 network 1 wait 1000 change_user AT51 AT51
+#debug timing 1 network 1 wait 1000 change_user AT51 AT52
+#debug timing 1 network 1 wait 2000
+#change_user AT52 AT52
+#log custom test_scenario_log
+#get SystemLocal.sessions.login.email
+#get SystemLocal.sessions.login.sessionId
+#get SystemLocal.sessions.login.userId
+#get UserProfile.test198
+#set UserProfile.test198 aa6600
+
+timing 1 network 1 
+wait 7000
+
+set GameConfigs.abracadabra 1
+
+
+wait 2000

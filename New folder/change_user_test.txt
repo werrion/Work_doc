@@ -1,0 +1,12 @@
+debug timing 1 network 1 
+wait 1000
+register_user AT1_3 ВасяAT1 AT1P 
+set UserProfile.test1 LOP1 
+set UserProfile.test2 LOP2 
+logout 
+register_user AT2_3 ВасяAT2 AT2P 
+set UserProfile.test1 LOP3 
+get UserProfile.test2 
+change_user AT1_3 AT1P
+get UserProfile.test1 
+get UserProfile.test2
