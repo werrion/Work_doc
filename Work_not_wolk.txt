@@ -801,7 +801,8 @@ ABUtility network 1 timing 1 wait 1000 change_user test_2_acc@gmail.com 111 get 
 
 
 
-
+pip install -r requirements.txt
+python -m pytest -v -l Tests\Test_logging.py Tests\Test_variables.py Tests\Test_conditions.py Tests\Test_DB.py Tests\Test_sessions.py Tests\Test_super_user_parallel.py Tests\Test_additional_condition_case.py Tests\Test_cohorting_parallel.py --maxfail=999 --alluredir=results
 
 
 
